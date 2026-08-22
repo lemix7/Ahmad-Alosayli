@@ -3,27 +3,71 @@ import TextReveal from "./TextReveal";
 
 interface AboutProps {
   heading?: string;
+  subheadline?: string;
   paragraph1?: string;
   paragraph2?: string;
+  paragraph3?: string;
+  quote?: string;
+  quoteReflection?: string;
+  experienceItems?: {
+    main: string[];
+    subHeading: string;
+    subItems: string[];
+  };
+  skills?: string[];
 }
 
 export const About: React.FC<AboutProps> = ({
   heading = "About Me",
-  paragraph1 = "I'm a Full-Stack Engineer who specializes in building AI-powered web applications. I work across the entire stack — from designing responsive, user-friendly frontends to building robust backend systems, APIs, and databases that power them. My focus areas include retrieval-augmented generation (RAG) systems, authentication and security, and system architecture that scales cleanly as products grow. I care about writing clean, maintainable code and approaching every project with a systems-level view — understanding how each piece fits into the bigger picture before I start building.",
-  paragraph2 = "I also manage operations at a factory, which has shaped how I approach engineering: thinking in systems, spotting bottlenecks before they become problems, and valuing reliability under real-world pressure. That combination of technical depth and operational experience gives me a practical, results-driven approach to solving problems. I work fluently in both English and Arabic, and I'm always looking for the next challenging problem to take apart and rebuild.",
+  subheadline = "I'm Ahmad. A full-stack engineer, systems thinker and problem solver.",
+  paragraph1 = "The cusp of engineering, AI, and systems architecture has always fascinated me, and I've never been afraid to dive straight into complex technical challenges and build from the ground up. Whether it's crafting responsive, intuitive frontends or designing scalable backend services, APIs, and databases, I build with precision and purpose.",
+  paragraph2 = "Over the years, I've worked across the full spectrum of software development — from modern full-stack web applications, authentication & security, and scalable databases to cloud infrastructure, APIs, and AI integrations. Everything I have engineered has been a vital stepping stone for crafting robust, high-performance digital products.",
+  paragraph3 = "What excites me most about engineering is creating systems that have purpose and solve real problems under real-world conditions. Managing operations at a factory alongside software engineering has fundamentally shaped my philosophy: thinking in systems, spotting bottlenecks before they emerge, and delivering resilient, high-value solutions. I work fluently in both English and Arabic, always eager to take on the next challenging problem to deconstruct and rebuild.",
+  quote = "\u201cThere is nothing so useless as doing efficiently that which should not be done at all.\u201d",
+  quoteReflection = "This resonates so deeply with me because I have no desire to write code or build complexity just for the sake of it. I focus on high-impact, clean, and reliable solutions that solve genuine problems and deliver lasting value in the real world.",
+  experienceItems = {
+    main: [
+      "Degree in Engineering & Systems Architecture",
+      "Years of experience in Full-Stack Engineering, AI System Integration, Web Architecture and Operations",
+    ],
+    subHeading: "Within that time, I have focused on:",
+    subItems: [
+      "Full-Stack Web Development & Modern Frameworks (React, Next.js, TypeScript)",
+      "AI-Powered Applications, RAG Pipelines & LLM Integration",
+      "Scalable Backend Architecture, REST & GraphQL APIs, Databases (PostgreSQL)",
+      "System Authentication, Security & Distributed Architecture",
+      "Factory Operations Management & Industrial Systems Optimization",
+      "Motion Design, Interactive Interfaces & Design Systems (GSAP, Tailwind)",
+    ],
+  },
+  skills = [
+    "Full-Stack Engineering",
+    "AI Applications",
+    "RAG Architecture",
+    "React & Next.js",
+    "TypeScript",
+    "Python & FastAPI",
+    "PostgreSQL",
+    "System Architecture",
+    "Cloud & DevOps",
+    "Tailwind CSS",
+    "GSAP",
+    "REST & GraphQL",
+    "Security & Auth",
+    "UI/UX Prototyping",
+    "Operations Management",
+  ],
 }) => {
   return (
-    <section className="relative min-h-screen w-full bg-[#0d0d0d] text-white flex flex-col  px-6 py-16 sm:px-10 sm:py-20 md:px-14 md:py-14 lg:px-14 lg:py-28 font-sans overflow-hidden border-t border-neutral-900 select-none">
+    <section className="relative min-h-screen w-full bg-[#0d0d0d] text-white flex flex-col px-6 py-16 sm:px-10 sm:py-20 md:px-14 md:py-20 lg:px-16 lg:py-28 font-sans overflow-hidden border-t border-neutral-900 select-none">
       {/* Subtle ambient gradient */}
       <div className="absolute inset-0 bg-radial-gradient from-neutral-900/20 to-transparent pointer-events-none" />
 
-      <div className="relative z-10 max-w-5xl  w-full flex flex-col  ">         
-       
-
-        {/* Section Header */}
+      <div className="relative z-10 max-w-4xl lg:max-w-5xl w-full flex flex-col">
+        {/* Section Header — kept exactly as before */}
         <TextReveal
           as="h2"
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-8 sm:mb-12"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase font-bold tracking-tight text-white mb-8 sm:mb-12"
           duration={1}
           ease="power4.out"
           animateOnScroll={true}
@@ -31,30 +75,73 @@ export const About: React.FC<AboutProps> = ({
           <span>{heading}</span>
         </TextReveal>
 
-        {/* Staggered Paragraphs */}
+        {/* Serif-style large subheadline */}
+        <div className="mb-10 sm:mb-14 overflow-hidden">
+          <TextReveal
+            as="h3"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-light text-neutral-100 leading-[1.18] tracking-tight"
+            duration={1.1}
+            ease="power4.out"
+            animateOnScroll={true}
+            splitType="lines"
+            stagger={0.08}
+          >
+            <span>{subheadline}</span>
+          </TextReveal>
+        </div>
+
+        {/* Narrative Paragraphs */}
         <TextReveal
           as="div"
-          className="flex flex-col gap-4 "
+          className="space-y-6 sm:space-y-8 max-w-4xl"
           duration={1.1}
-          stagger={0.08}
-          delay={0.15}
+          stagger={0.06}
+          delay={0.1}
           ease="power4.out"
           splitType="lines"
           animateOnScroll={true}
         >
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-neutral-200 leading-relaxed tracking-tight">
+          <p className="text-neutral-300 font-light text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
             {paragraph1}
           </p>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-neutral-200 leading-relaxed tracking-tight">
+          <p className="text-neutral-300 font-light text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
             {paragraph2}
+          </p>
+          <p className="text-neutral-300 font-light text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
+            {paragraph3}
           </p>
         </TextReveal>
 
-      </div>
 
+        {/* SKILLS SECTION */}
+        <div className="pt-4 border-t flex flex-col gap-4 border-neutral-800/60">
+          <TextReveal
+            as="h4"
+            className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-white mb-2 sm:mb-2"
+            duration={1}
+            ease="power4.out"
+            animateOnScroll={true}
+          >
+            <span>Skills</span>
+          </TextReveal>
+
+          <TextReveal
+            as="p"
+            className="text-neutral-300 font-light text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.9]"
+            duration={1}
+            stagger={0.06}
+            delay={0.05}
+            ease="power4.out"
+            animateOnScroll={true}
+            splitType="lines"
+          >
+            <span>{skills.join("  /  ")}</span>
+          </TextReveal>
+        </div>
+
+      </div>
     </section>
   );
 };
 
 export default About;
-

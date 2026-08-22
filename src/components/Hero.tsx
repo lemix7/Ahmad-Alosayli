@@ -20,7 +20,7 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   return (
     <section className="relative h-screen min-h-[640px] w-full bg-[#0d0d0d] text-white flex flex-col justify-between px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-16 lg:py-12 select-none overflow-hidden font-sans">
-      
+
       {/* Subtle background ambient grain & gradient */}
       <div className="absolute inset-0 bg-radial-gradient from-neutral-900/30 to-transparent pointer-events-none" />
 
@@ -41,12 +41,10 @@ export const Hero: React.FC<HeroProps> = ({
           href={resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1.5 px-6 py-2 rounded-full border border-neutral-700 bg-neutral-900/60 backdrop-blur-sm text-[14px] font-semibold tracking-wider uppercase text-neutral-300 hover:text-white hover:border-neutral-400 transition-all duration-200"
+          className="group inline-flex items-center gap-1.5 px-6 py-2 rounded-full border border-neutral-700 bg-neutral-900/60 backdrop-blur-sm text-[14px] font-semibold tracking-wider  text-neutral-300 hover:text-white hover:border-neutral-400 transition-all duration-200"
         >
-          <span>My Resume</span>
-          <span className="text-[14px] text-neutral-400 group-hover:translate-x-0.5 transition-transform duration-200">
-            &gt;
-          </span>
+          <span>Resume</span>
+          
         </a>
       </header>
 

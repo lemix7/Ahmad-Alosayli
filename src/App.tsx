@@ -1,6 +1,7 @@
 import React from 'react';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { Projects } from './components/Projects';
 import { SmoothScroll } from './components/SmoothScroll';
 
 export const App: React.FC = () => {
@@ -9,6 +10,7 @@ export const App: React.FC = () => {
       <div className="min-h-screen bg-[#0c0c0c] text-white">
         <Hero />
         <About />
+        <Projects />
       </div>
     </SmoothScroll>
   );
