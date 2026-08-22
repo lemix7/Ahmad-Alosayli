@@ -1,4 +1,5 @@
 import React from 'react';
+import TextReveal from './TextReveal';
 
 interface HeroProps {
   name?: string;
@@ -19,6 +20,7 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   return (
     <section className="relative h-screen min-h-[640px] w-full bg-[#0d0d0d] text-white flex flex-col justify-between px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-16 lg:py-12 select-none overflow-hidden font-sans">
+      
       {/* Subtle background ambient grain & gradient */}
       <div className="absolute inset-0 bg-radial-gradient from-neutral-900/30 to-transparent pointer-events-none" />
 
@@ -50,14 +52,21 @@ export const Hero: React.FC<HeroProps> = ({
 
       {/* CENTER HERO MAIN HEADLINE */}
       <main className="relative z-10 my-auto flex flex-col justify-center max-w-full">
-        <h1 className="font-sans font-semibold tracking-[-0.035em] uppercase text-white leading-[0.88] text-[13.5vw] sm:text-[12vw] md:text-[11vw] lg:text-[10.2vw] 2xl:text-[9.8vw]">
+        <TextReveal
+          as="h1"
+          className="font-sans font-semibold tracking-[-0.035em] uppercase text-white leading-[0.88] text-[13.5vw] sm:text-[12vw] md:text-[11vw] lg:text-[10.2vw] 2xl:text-[9.8vw]"
+          duration={1.2}
+          stagger={0.15}
+          delay={0.1}
+          ease="power4.out"
+        >
           <span className="block">
             {titleLine1}
           </span>
           <span className="block">
             {titleLine2}
           </span>
-        </h1>
+        </TextReveal>
       </main>
 
   
