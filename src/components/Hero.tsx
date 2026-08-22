@@ -6,7 +6,7 @@ interface HeroProps {
   titleLine2?: string;
   statusText?: string;
   locationText?: string;
-  blogUrl?: string;
+  resumeUrl?: string;
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -15,7 +15,7 @@ export const Hero: React.FC<HeroProps> = ({
   titleLine2 = "DEVELOPER",
   statusText = "OPEN TO WORK",
   locationText = "Based in France",
-  blogUrl = "#blog",
+  resumeUrl = "/Ahmad_Sabil_Resume.pdf",
 }) => {
   return (
     <section className="relative h-screen min-h-[640px] w-full bg-[#0d0d0d] text-white flex flex-col justify-between px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-16 lg:py-12 select-none overflow-hidden font-sans">
@@ -28,19 +28,21 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="flex flex-col">
           <a
             href="#"
-            className="text-base sm:text-lg md:text-xl font-normal tracking-tight text-white/95 hover:text-white transition-colors"
+            className="text-base sm:text-2xl md:text-4xl font-normal tracking-tight text-white/95 hover:text-white transition-colors"
           >
             {name}
           </a>
         </div>
 
-        {/* Blog Pill Button */}
+        {/* Resume Pill Button */}
         <a
-          href={blogUrl}
-          className="group inline-flex items-center gap-1.5 px-4 py-1 rounded-full border border-neutral-700 bg-neutral-900/60 backdrop-blur-sm text-[11px] font-semibold tracking-wider uppercase text-neutral-300 hover:text-white hover:border-neutral-400 transition-all duration-200"
+          href={resumeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-1.5 px-6 py-2 rounded-full border border-neutral-700 bg-neutral-900/60 backdrop-blur-sm text-[14px] font-semibold tracking-wider uppercase text-neutral-300 hover:text-white hover:border-neutral-400 transition-all duration-200"
         >
-          <span>BLOG</span>
-          <span className="text-[10px] text-neutral-400 group-hover:translate-x-0.5 transition-transform duration-200">
+          <span>My Resume</span>
+          <span className="text-[14px] text-neutral-400 group-hover:translate-x-0.5 transition-transform duration-200">
             &gt;
           </span>
         </a>
@@ -48,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({
 
       {/* CENTER HERO MAIN HEADLINE */}
       <main className="relative z-10 my-auto flex flex-col justify-center max-w-full">
-        <h1 className="font-sans font-black tracking-[-0.035em] uppercase text-white leading-[0.88] text-[13.5vw] sm:text-[12vw] md:text-[11vw] lg:text-[10.2vw] 2xl:text-[9.8vw]">
+        <h1 className="font-sans font-semibold tracking-[-0.035em] uppercase text-white leading-[0.88] text-[13.5vw] sm:text-[12vw] md:text-[11vw] lg:text-[10.2vw] 2xl:text-[9.8vw]">
           <span className="block">
             {titleLine1}
           </span>
@@ -58,28 +60,10 @@ export const Hero: React.FC<HeroProps> = ({
         </h1>
       </main>
 
-      {/* FIXED SIDE AWWWARDS / HONORS BADGE (Right Edge) */}
-      <aside
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center bg-white text-black rounded-l-[3px] py-3.5 px-1.5 sm:px-2 shadow-2xl transition-transform hover:-translate-x-0.5 cursor-pointer"
-        aria-label="Honors Badge"
-      >
-        <span className="font-serif font-black text-xs sm:text-sm tracking-tighter leading-none mb-2">
-          W.
-        </span>
-        <div className="w-3.5 h-[1px] bg-black/25 mb-2.5" />
-        <span
-          className="text-[9px] font-semibold tracking-widest uppercase select-none"
-          style={{
-            writingMode: 'vertical-rl',
-            transform: 'rotate(180deg)',
-          }}
-        >
-          Honors
-        </span>
-      </aside>
-
+  
       {/* BOTTOM BAR */}
-      <footer className="relative z-20 flex flex-row items-end justify-between w-full">
+      <div className="relative z-20 flex flex-row items-end justify-between w-full">
+
         {/* Left: Rotating Circular "SCROLL DOWN" Badge */}
         <div className="relative flex items-center justify-center">
           <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center">
@@ -122,7 +106,8 @@ export const Hero: React.FC<HeroProps> = ({
             {locationText}
           </p>
         </div>
-      </footer>
+
+      </div>
     </section>
   );
 };
