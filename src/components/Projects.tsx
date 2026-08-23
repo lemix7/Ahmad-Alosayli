@@ -101,20 +101,21 @@ export const Projects: React.FC = () => {
       const totalProjects = PROJECTS_DATA.length;
       if (totalProjects <= 1) return;
 
-      // Pin the section and scrub through project indices
+      // Pin the section cleanly and scrub through project indices without anticipatePin jumping
       const st = ScrollTrigger.create({
         id: "projects-scroll-trigger",
         trigger: triggerRef.current,
+        pin: containerRef.current || triggerRef.current,
         start: "top top",
-        end: `+=${(totalProjects - 1) * 100}%`,
-        pin: true,
-        scrub: 0.6,
-        anticipatePin: 1,
+        end: () => `+=${(totalProjects - 1) * window.innerHeight}`,
+        scrub: 0.5,
+        pinSpacing: true,
+        invalidateOnRefresh: true,
         onUpdate: (self) => {
           const progress = self.progress;
           const newIndex = Math.min(
             totalProjects - 1,
-            Math.max(0, Math.floor(progress * totalProjects + 0.05))
+            Math.max(0, Math.floor(progress * totalProjects))
           );
           setActiveIndex(newIndex);
         },
