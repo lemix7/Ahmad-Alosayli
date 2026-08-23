@@ -23,23 +23,6 @@ export const About: React.FC<AboutProps> = ({
   paragraph1 = "The cusp of engineering, AI, and systems architecture has always fascinated me, and I've never been afraid to dive straight into complex technical challenges and build from the ground up. Whether it's crafting responsive, intuitive frontends or designing scalable backend services, APIs, and databases, I build with precision and purpose.",
   paragraph2 = "Over the years, I've worked across the full spectrum of software development — from modern full-stack web applications, authentication & security, and scalable databases to cloud infrastructure, APIs, and AI integrations. Everything I have engineered has been a vital stepping stone for crafting robust, high-performance digital products.",
   paragraph3 = "What excites me most about engineering is creating systems that have purpose and solve real problems under real-world conditions. Managing operations at a factory alongside software engineering has fundamentally shaped my philosophy: thinking in systems, spotting bottlenecks before they emerge, and delivering resilient, high-value solutions. I work fluently in both English and Arabic, always eager to take on the next challenging problem to deconstruct and rebuild.",
-  quote = "\u201cThere is nothing so useless as doing efficiently that which should not be done at all.\u201d",
-  quoteReflection = "This resonates so deeply with me because I have no desire to write code or build complexity just for the sake of it. I focus on high-impact, clean, and reliable solutions that solve genuine problems and deliver lasting value in the real world.",
-  experienceItems = {
-    main: [
-      "Degree in Engineering & Systems Architecture",
-      "Years of experience in Full-Stack Engineering, AI System Integration, Web Architecture and Operations",
-    ],
-    subHeading: "Within that time, I have focused on:",
-    subItems: [
-      "Full-Stack Web Development & Modern Frameworks (React, Next.js, TypeScript)",
-      "AI-Powered Applications, RAG Pipelines & LLM Integration",
-      "Scalable Backend Architecture, REST & GraphQL APIs, Databases (PostgreSQL)",
-      "System Authentication, Security & Distributed Architecture",
-      "Factory Operations Management & Industrial Systems Optimization",
-      "Motion Design, Interactive Interfaces & Design Systems (GSAP, Tailwind)",
-    ],
-  },
   skills = [
     "Full-Stack Engineering",
     "AI Applications",

@@ -2,6 +2,7 @@ import React from 'react';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Projects } from './components/Projects';
+import { Footer } from './components/Footer';
 import { SmoothScroll } from './components/SmoothScroll';
 
 export const App: React.FC = () => {
@@ -11,6 +12,7 @@ export const App: React.FC = () => {
         <Hero />
         <About />
         <Projects />
+        <Footer />
       </div>
     </SmoothScroll>
   );

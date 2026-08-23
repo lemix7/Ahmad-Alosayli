@@ -14,8 +14,6 @@ export const Hero: React.FC<HeroProps> = ({
   name = "Ahmad Alosayli",
   titleLine1 = "FULL-STACK",
   titleLine2 = "DEVELOPER",
-  statusText = "OPEN TO WORK",
-  locationText = "Based in France",
   resumeUrl = "/Ahmad_Sabil_Resume.pdf",
 }) => {
   return (
@@ -100,7 +98,7 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Right: "OPEN TO WORK" & Location Status */}
-        <div className="flex flex-col items-end text-right">
+        {/* <div className="flex flex-col items-end text-right">
           <div className="flex items-center gap-2 text-white">
             <span className="font-extrabold text-base sm:text-lg md:text-xl lg:text-2xl tracking-tight uppercase">
               {statusText}
@@ -112,7 +110,7 @@ export const Hero: React.FC<HeroProps> = ({
           <p className="text-xs sm:text-sm text-neutral-400 font-normal tracking-wide mt-1">
             {locationText}
           </p>
-        </div>
+        </div> */}
 
       </div>
     </section>

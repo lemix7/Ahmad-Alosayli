@@ -4,110 +4,44 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import {
   ExternalLink,
-  Sparkles,
   ArrowUpRight,
-  TrendingUp,
-  Activity,
-  ChevronRight,
   Github,
   X,
 } from "lucide-react";
 import TextReveal from "./TextReveal";
+import { ProjectCard, ProjectItem } from "./ProjectCard";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export interface ProjectItem {
-  id: string;
-  number: string;
-  year: string;
-  isNew?: boolean;
-  title: string;
-  subtitle: string;
-  category: string;
-  categoryTag: string;
-  description: string;
-  tags: string[];
-  gradient: string;
-  accentColor: string;
-  liveUrl?: string;
-  githubUrl?: string;
-  stats?: { label: string; value: string }[];
-  type: "orion" | "ennea" | "kia" | "casino" | "nftfest";
-}
-
 const PROJECTS_DATA: ProjectItem[] = [
+ 
   {
-    id: "orion",
+    id: "RAG",
     number: "01",
-    year: "2025",
-    isNew: true,
-    title: "ORION",
-    subtitle: "AI-Powered Growth",
-    category: "SAAS PLATFORM",
-    categoryTag: "SAAS PLATFORM →",
+    year: "2026",
+    title: "RAG-LMX",
+    subtitle: "AI Document Assistant",
+    category: "AI WEB APP",
+    categoryTag: "WEB APP →",
     description:
-      "SaaS growth copilot automating sales, marketing & data management with AI-powered lead scoring.",
-    tags: ["React 19", "Next.js", "Tailwind CSS", "Python / FastAPI", "PostgreSQL", "OpenAI API"],
-    gradient: "from-emerald-950/40 via-neutral-900 to-neutral-950",
-    accentColor: "#10b981",
-    liveUrl: "https://orion-preview.example.com",
-    githubUrl: "https://github.com",
-    stats: [
-      { label: "Active Revenue", value: "50 000€" },
-      { label: "Conversion Rate", value: "+34.8%" },
-      { label: "AI Accuracy", value: "99.4%" },
-    ],
-    type: "orion",
-  },
-  {
-    id: "ennea",
-    number: "02",
-    year: "2024",
-    title: "ENNEA",
-    subtitle: "Your Web3 Journey",
-    category: "WEB3 LANDING",
-    categoryTag: "WEB3 LANDING →",
-    description:
-      "Next-generation decentralized finance gateway with non-custodial portfolio tracking, sub-second cross-chain swaps, and automated yield analytics.",
-    tags: ["TypeScript", "Solidity", "Wagmi / Viem", "Tailwind CSS", "Ethers.js", "GSAP"],
+      "Full-stack Retrieval-Augmented Generation system built as a  document assistant, combining hybrid search, cross-encoder reranking, and secure multi-user access for accurate, grounded answers over institutional documents.",
+    tags: ["Next.js 14", "FastAPI", "LangChain", "ChromaDB", "Supabase", "OpenAI"],
     gradient: "from-violet-950/40 via-neutral-900 to-neutral-950",
     accentColor: "#8b5cf6",
-    liveUrl: "https://ennea-web3.example.com",
-    githubUrl: "https://github.com",
+    liveUrl: "https://TODO-add-live-url.example.com",
+    githubUrl: "https://github.com/TODO-your-repo",
     stats: [
-      { label: "Total Volume", value: "$12.4M" },
-      { label: "Chains", value: "8 Connected" },
-      { label: "Latency", value: "0.4s" },
+      { label: "Retrieval", value: "Hybrid BM25 + MMR" },
+      { label: "Reranking", value: "Cross-Encoder" },
+      { label: "Auth", value: "JWT + RLS" },
     ],
     type: "ennea",
   },
   {
-    id: "kia",
-    number: "03",
-    year: "2024",
-    title: "KIA EV9",
-    subtitle: "Experience Innovation",
-    category: "3D NFT EXPERIENCE",
-    categoryTag: "3D NFT EXPERIENCE →",
-    description:
-      "Immersive 3D web configurator and digital collectible experience celebrating the flagship all-electric SUV with real-time spatial telemetry.",
-    tags: ["Three.js", "React Three Fiber", "GLSL Shaders", "WebAudio API", "Tailwind CSS"],
-    gradient: "from-cyan-950/40 via-neutral-900 to-neutral-950",
-    accentColor: "#06b6d4",
-    liveUrl: "https://kia-ev9-experience.example.com",
-    githubUrl: "https://github.com",
-    stats: [
-      { label: "Range (WLTP)", value: "541 km" },
-      { label: "Charging", value: "800V Ultra" },
-      { label: "Acceleration", value: "5.3s" },
-    ],
-    type: "kia",
-  },
-  {
     id: "casino",
-    number: "04",
+    number: "02",
     year: "2023",
     title: "CASINO",
     subtitle: "Play & Earn",
@@ -129,7 +63,7 @@ const PROJECTS_DATA: ProjectItem[] = [
   },
   {
     id: "nftfest",
-    number: "05",
+    number: "03",
     year: "2023",
     title: "NFT FEST",
     subtitle: "Digital Art Festival",
@@ -151,414 +85,6 @@ const PROJECTS_DATA: ProjectItem[] = [
   },
 ];
 
-/* -------------------------------------------------------------------------- */
-/* PREVIEW VISUAL COMPONENTS (High Fidelity Custom Interactive Mockups)      */
-/* -------------------------------------------------------------------------- */
-
-const OrionMockup: React.FC = () => (
-  <div className="w-full h-full bg-[#0b0f14] text-neutral-300 font-sans flex text-[10px] sm:text-[11px] select-none overflow-hidden relative border border-neutral-800/80 rounded-2xl shadow-inner">
-    {/* Left Sidebar matching exact screenshot */}
-    <div className="w-28 sm:w-36 md:w-44 bg-[#080c10]/95 border-r border-neutral-800/70 p-2 sm:p-4 flex flex-col justify-between hidden md:flex shrink-0">
-      <div className="space-y-2 sm:space-y-3">
-        <div className="flex items-center gap-2 pb-2 border-b border-neutral-800/80">
-          <div className="w-2.5 h-2.5 rounded-sm bg-emerald-500 shadow-[0_0_8px_#10b981]" />
-          <span className="font-semibold text-white tracking-wide text-xs">Tableau de bord</span>
-        </div>
-        <nav className="space-y-1 text-neutral-400">
-          {[
-            "Modèles",
-            "Utilisateurs",
-            "Produits",
-            "Organisations",
-            "Finance",
-            "SEO & GEO",
-            "Paiements",
-            "Affiliations",
-            "Comptabilité",
-          ].map((item, idx) => (
-            <div
-              key={item}
-              className={`flex items-center justify-between px-2 py-0.5 sm:py-1 rounded transition-colors text-[10px] sm:text-[11px] ${
-                idx === 0 ? "bg-neutral-800/60 text-white font-medium" : "hover:text-neutral-200"
-              }`}
-            >
-              <span>{item}</span>
-              <ChevronRight className="w-2.5 h-2.5 opacity-40" />
-            </div>
-          ))}
-        </nav>
-      </div>
-      <div className="p-2 rounded bg-neutral-900/60 border border-neutral-800 text-[9px] text-neutral-400">
-        <div className="flex items-center gap-1 text-emerald-400 font-medium">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-          <span>API Connected</span>
-        </div>
-        <span className="text-[8px] opacity-70">Latency: 24ms</span>
-      </div>
-    </div>
-
-    {/* Main Content Area */}
-    <div className="flex-1 flex flex-col p-2.5 sm:p-4 overflow-hidden bg-gradient-to-b from-[#0e141b] to-[#090d12] justify-between">
-      {/* Header bar */}
-      <div className="flex items-center justify-between pb-2 border-b border-neutral-800/60 gap-2">
-        <div className="flex items-center gap-2">
-          <span className="text-xs sm:text-sm font-semibold text-white">Conversions attribuées</span>
-          <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            Live Stream
-          </span>
-        </div>
-        <div className="flex items-center gap-2 text-neutral-400 text-[9px] sm:text-[10px]">
-          <span className="bg-neutral-900 border border-neutral-800 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
-            8 oct. 2025 – 10 nov. 2025
-          </span>
-        </div>
-      </div>
-
-      {/* Metric Cards Row */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 my-1.5 sm:my-2">
-        {[
-          { label: "Taux de conv.", val: "4.82%", up: "+1.2%" },
-          { label: "Campagnes", val: "18 Actives", up: "+3" },
-          { label: "Flux AI", val: "1,240 /m", up: "+24%" },
-          { label: "E-mail ROI", val: "340.5%", up: "+14%" },
-        ].map((m, i) => (
-          <div
-            key={i}
-            className="p-1.5 sm:p-2 rounded-lg bg-neutral-900/60 border border-neutral-800/80 hover:border-neutral-700 transition-colors"
-          >
-            <div className="text-neutral-400 text-[8px] sm:text-[9px] truncate">{m.label}</div>
-            <div className="text-xs sm:text-sm font-bold text-white mt-0.5 flex items-center justify-between">
-              <span>{m.val}</span>
-              <span className="text-[8px] sm:text-[9px] font-normal text-emerald-400">{m.up}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Main Chart Graphic */}
-      <div className="p-2 sm:p-2.5 rounded-lg bg-neutral-900/40 border border-neutral-800/60 relative my-1 sm:my-1.5">
-        <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-neutral-400 mb-0.5">
-          <div className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-            <span className="text-neutral-200 font-medium truncate">Vue d'ensemble des revenus</span>
-          </div>
-          <span className="text-emerald-400 font-semibold text-xs sm:text-sm">50 000€</span>
-        </div>
-        <svg className="w-full h-10 sm:h-16 overflow-visible" viewBox="0 0 500 100" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.0" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M 0,70 Q 70,20 140,50 T 280,20 T 420,40 T 500,10 L 500,100 L 0,100 Z"
-            fill="url(#chartGrad)"
-          />
-          <path
-            d="M 0,70 Q 70,20 140,50 T 280,20 T 420,40 T 500,10"
-            fill="none"
-            stroke="#06b6d4"
-            strokeWidth="2.5"
-          />
-          <path
-            d="M 0,85 Q 80,60 160,75 T 320,50 T 500,35"
-            fill="none"
-            stroke="#10b981"
-            strokeWidth="1.5"
-            strokeDasharray="4 4"
-            opacity="0.7"
-          />
-        </svg>
-      </div>
-
-      {/* Table Rows Preview */}
-      <div className="space-y-1 overflow-hidden">
-        <div className="text-[9px] sm:text-[10px] font-medium text-neutral-400 flex justify-between px-1">
-          <span>Flux les plus performants</span>
-          <span>Conversion</span>
-        </div>
-        {[
-          { name: "Panier abandonné", rate: "18.4%", conv: "94%" },
-          { name: "Séquence de bienvenue", rate: "14.2%", conv: "87%" },
-          { name: "Offre 24h Flash VIP", rate: "22.6%", conv: "96%" },
-        ].slice(0, 2).map((row, i) => (
-          <div
-            key={i}
-            className="flex items-center justify-between px-2 py-1 rounded bg-neutral-900/50 border border-neutral-800/50 text-[9px] sm:text-[10px]"
-          >
-            <div className="flex items-center gap-1.5 truncate">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
-              <span className="text-neutral-200 truncate">{row.name}</span>
-            </div>
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-neutral-400">{row.rate}</span>
-              <span className="text-emerald-400 font-semibold">{row.conv}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
-const EnneaMockup: React.FC = () => (
-  <div className="w-full h-full bg-[#0c0817] text-neutral-300 font-sans p-3 sm:p-5 flex flex-col justify-between border border-violet-900/40 rounded-2xl relative overflow-hidden">
-    <div className="absolute top-0 right-0 w-64 h-64 bg-violet-600/15 rounded-full blur-3xl pointer-events-none" />
-    <div className="absolute bottom-0 left-0 w-64 h-64 bg-fuchsia-600/10 rounded-full blur-3xl pointer-events-none" />
-
-    {/* Header */}
-    <div className="relative z-10 flex items-center justify-between pb-2 border-b border-violet-900/30">
-      <div className="flex items-center gap-2">
-        <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-violet-600 to-fuchsia-500 flex items-center justify-center text-white font-bold text-xs shadow-[0_0_15px_#8b5cf6]">
-          E
-        </div>
-        <div>
-          <div className="text-xs sm:text-sm font-bold text-white tracking-wide">ENNEA PROTOCOL</div>
-          <div className="text-[8px] sm:text-[9px] text-violet-400">Multi-Chain Portal v3</div>
-        </div>
-      </div>
-      <span className="px-2 py-0.5 rounded-full text-[9px] font-mono bg-violet-950/80 border border-violet-700/50 text-violet-300">
-        0x7a3...f89c
-      </span>
-    </div>
-
-    {/* Center visual: Token Swap & Liquidity Card */}
-    <div className="relative z-10 my-auto grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 py-1">
-      {/* Swap Box */}
-      <div className="p-2.5 sm:p-3 rounded-xl bg-neutral-900/80 border border-violet-800/40 backdrop-blur-md space-y-1.5 sm:space-y-2">
-        <div className="flex justify-between text-[9px] sm:text-[10px] text-neutral-400">
-          <span>Instant Cross-Swap</span>
-          <span className="text-violet-400">Gas: ~0.001 ETH</span>
-        </div>
-        <div className="p-1.5 sm:p-2 rounded-lg bg-neutral-950/80 border border-neutral-800 flex items-center justify-between">
-          <div>
-            <div className="text-[8px] sm:text-[9px] text-neutral-500">Pay</div>
-            <div className="text-xs sm:text-sm font-bold text-white">4.500 ETH</div>
-          </div>
-          <span className="px-1.5 py-0.5 rounded bg-neutral-800 text-[9px] font-semibold text-neutral-200">
-            Ethereum
-          </span>
-        </div>
-        <div className="p-1.5 sm:p-2 rounded-lg bg-neutral-950/80 border border-neutral-800 flex items-center justify-between">
-          <div>
-            <div className="text-[8px] sm:text-[9px] text-neutral-500">Receive</div>
-            <div className="text-xs sm:text-sm font-bold text-emerald-400">14,850 USDC</div>
-          </div>
-          <span className="px-1.5 py-0.5 rounded bg-neutral-800 text-[9px] font-semibold text-neutral-200">
-            Polygon
-          </span>
-        </div>
-      </div>
-
-      {/* Yield & Portfolio Stats */}
-      <div className="p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-violet-950/40 to-neutral-900/80 border border-violet-800/30 backdrop-blur-md flex flex-col justify-between space-y-1.5">
-        <div>
-          <span className="text-[9px] sm:text-[10px] text-violet-300 font-medium">Vault Yield</span>
-          <div className="text-lg sm:text-xl font-black text-white mt-0.5 tracking-tight">
-            $12,482,900
-          </div>
-          <div className="text-[9px] text-emerald-400 flex items-center gap-1 mt-0.5">
-            <TrendingUp className="w-2.5 h-2.5" /> +21.8% APY
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-1 pt-1.5 border-t border-violet-900/30 text-[9px]">
-          <div>
-            <div className="text-neutral-400 text-[8px]">24h Volume</div>
-            <div className="font-semibold text-white">$3.8M</div>
-          </div>
-          <div>
-            <div className="text-neutral-400 text-[8px]">Slippage</div>
-            <div className="font-semibold text-white">&lt; 0.05%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {/* Bottom Chain ticker */}
-    <div className="relative z-10 flex items-center justify-between pt-1.5 border-t border-violet-900/30 text-[9px] sm:text-[10px] text-neutral-400">
-      <span className="truncate">Ethereum • Arbitrum • Optimism • Polygon</span>
-      <span className="text-violet-400 font-mono shrink-0">Synced</span>
-    </div>
-  </div>
-);
-
-const KiaMockup: React.FC = () => (
-  <div className="w-full h-full bg-[#050b11] text-neutral-300 font-sans p-3 sm:p-5 flex flex-col justify-between border border-cyan-900/40 rounded-2xl relative overflow-hidden">
-    <div className="absolute inset-0 bg-[linear-gradient(to_right,#08334415_1px,transparent_1px),linear-gradient(to_bottom,#08334415_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-
-    {/* Top HUD */}
-    <div className="relative z-10 flex items-center justify-between pb-2 border-b border-cyan-900/40">
-      <div className="flex items-center gap-2">
-        <span className="w-2 h-2 bg-cyan-400 rounded-sm shadow-[0_0_8px_#22d3ee]" />
-        <span className="text-xs sm:text-sm font-bold text-white tracking-widest font-mono">
-          KIA EV9 // GT-LINE
-        </span>
-      </div>
-      <span className="text-[9px] font-mono text-cyan-400 border border-cyan-800/80 px-2 py-0.5 rounded bg-cyan-950/40">
-        3D STUDIO
-      </span>
-    </div>
-
-    {/* Center 3D Car Wireframe Graphic */}
-    <div className="relative z-10 my-auto flex flex-col items-center justify-center py-2 sm:py-3">
-      <div className="relative w-full max-w-sm h-24 sm:h-28 flex items-center justify-center">
-        <svg viewBox="0 0 400 160" className="w-full h-full overflow-visible drop-shadow-[0_0_20px_#06b6d4]">
-          <path
-            d="M 30,120 L 70,120 Q 95,95 125,95 Q 155,95 180,120 L 250,120 Q 275,95 305,95 Q 335,95 360,120 L 380,120 L 375,100 L 330,85 L 260,50 L 140,50 L 80,85 L 30,95 Z"
-            fill="none"
-            stroke="#22d3ee"
-            strokeWidth="2"
-          />
-          <path
-            d="M 145,55 L 255,55 L 315,85 L 95,85 Z"
-            fill="#083344"
-            fillOpacity="0.4"
-            stroke="#67e8f9"
-            strokeWidth="1.2"
-          />
-          <circle cx="125" cy="120" r="22" fill="#04121a" stroke="#22d3ee" strokeWidth="2" />
-          <circle cx="125" cy="120" r="11" fill="#083344" stroke="#67e8f9" strokeWidth="1.2" />
-          <circle cx="305" cy="120" r="22" fill="#04121a" stroke="#22d3ee" strokeWidth="2" />
-          <circle cx="305" cy="120" r="11" fill="#083344" stroke="#67e8f9" strokeWidth="1.2" />
-          <line x1="380" y1="105" x2="405" y2="105" stroke="#a5f3fc" strokeWidth="2.5" strokeLinecap="round" />
-          <line x1="30" y1="100" x2="15" y2="100" stroke="#f43f5e" strokeWidth="2.5" strokeLinecap="round" />
-        </svg>
-
-        <div className="absolute -bottom-1 px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-600/40 text-[8px] sm:text-[9px] font-mono text-cyan-300 flex items-center gap-1 shadow-lg">
-          <Activity className="w-2.5 h-2.5 text-cyan-400" />
-          <span>DRAG 360°</span>
-        </div>
-      </div>
-    </div>
-
-    {/* Bottom Telemetry Bar */}
-    <div className="relative z-10 grid grid-cols-3 gap-1.5 pt-2 border-t border-cyan-900/40 text-center">
-      <div className="p-1 sm:p-1.5 rounded bg-cyan-950/30 border border-cyan-900/40">
-        <div className="text-[8px] text-neutral-400">RANGE</div>
-        <div className="text-xs sm:text-sm font-bold text-white font-mono">541 KM</div>
-      </div>
-      <div className="p-1 sm:p-1.5 rounded bg-cyan-950/30 border border-cyan-900/40">
-        <div className="text-[8px] text-neutral-400">CHARGE</div>
-        <div className="text-xs sm:text-sm font-bold text-cyan-400 font-mono">24 MIN</div>
-      </div>
-      <div className="p-1 sm:p-1.5 rounded bg-cyan-950/30 border border-cyan-900/40">
-        <div className="text-[8px] text-neutral-400">0-100</div>
-        <div className="text-xs sm:text-sm font-bold text-white font-mono">5.3 S</div>
-      </div>
-    </div>
-  </div>
-);
-
-const CasinoMockup: React.FC = () => (
-  <div className="w-full h-full bg-[#110c05] text-neutral-300 font-sans p-3 sm:p-5 flex flex-col justify-between border border-amber-900/40 rounded-2xl relative overflow-hidden">
-    <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-    {/* Header */}
-    <div className="relative z-10 flex items-center justify-between pb-2 border-b border-amber-900/30">
-      <div className="flex items-center gap-2">
-        <div className="w-5 h-5 rounded bg-amber-500 text-black font-black flex items-center justify-center text-xs shadow-[0_0_12px_#f59e0b]">
-          ♠
-        </div>
-        <span className="text-xs sm:text-sm font-black text-amber-100 tracking-wider">
-          CYBER CASINO
-        </span>
-      </div>
-      <span className="px-2 py-0.5 rounded bg-amber-950/80 border border-amber-700/50 text-amber-300 text-[9px] font-mono">
-        PROVABLY FAIR
-      </span>
-    </div>
-
-    {/* Center Slots & Live Multipliers */}
-    <div className="relative z-10 my-auto grid grid-cols-3 gap-1.5 sm:gap-2.5 py-1 sm:py-2">
-      {[
-        { title: "JACKPOT", val: "$1.48M", tag: "LIVE" },
-        { title: "MULTIPLIER", val: "84.2x", tag: "RECENT" },
-        { title: "ONLINE", val: "4,821", tag: "ACTIVE" },
-      ].map((card, i) => (
-        <div
-          key={i}
-          className="p-2 sm:p-2.5 rounded-xl bg-neutral-900/90 border border-amber-800/40 flex flex-col justify-center text-center shadow-lg"
-        >
-          <div className="text-[8px] text-amber-400/80 font-mono tracking-wider">
-            {card.title}
-          </div>
-          <div className="text-xs sm:text-sm font-black text-white mt-0.5 truncate">{card.val}</div>
-          <div className="text-[7px] sm:text-[8px] text-emerald-400 mt-0.5 font-semibold">{card.tag}</div>
-        </div>
-      ))}
-    </div>
-
-    {/* Bottom Live Bets Ticker */}
-    <div className="relative z-10 space-y-1 pt-1.5 border-t border-amber-900/30 text-[9px] sm:text-[10px]">
-      <div className="flex justify-between text-neutral-400 text-[8px]">
-        <span>Recent High-Rollers</span>
-        <span>Payout</span>
-      </div>
-      <div className="flex justify-between items-center px-2 py-0.5 sm:py-1 rounded bg-neutral-900/60 border border-neutral-800 text-[8px] sm:text-[9px]">
-        <span className="text-neutral-300 truncate">0x48...9a (Roulette)</span>
-        <span className="text-amber-400 font-bold shrink-0">+12.50 ETH</span>
-      </div>
-    </div>
-  </div>
-);
-
-const NftFestMockup: React.FC = () => (
-  <div className="w-full h-full bg-[#14060c] text-neutral-300 font-sans p-3 sm:p-5 flex flex-col justify-between border border-rose-900/40 rounded-2xl relative overflow-hidden">
-    <div className="absolute bottom-0 right-0 w-64 h-64 bg-rose-600/15 rounded-full blur-3xl pointer-events-none" />
-
-    {/* Header */}
-    <div className="relative z-10 flex items-center justify-between pb-2 border-b border-rose-900/30">
-      <div className="flex items-center gap-2">
-        <Sparkles className="w-3.5 h-3.5 text-rose-400" />
-        <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
-          NFT FEST GLOBAL
-        </span>
-      </div>
-      <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-rose-950/80 border border-rose-700/50 text-rose-300">
-        PARIS • NYC
-      </span>
-    </div>
-
-    {/* Center Virtual Gallery Tiles */}
-    <div className="relative z-10 my-auto grid grid-cols-2 gap-2 sm:gap-3 py-1 sm:py-2">
-      <div className="p-2 sm:p-2.5 rounded-xl bg-neutral-900/80 border border-rose-900/30 flex flex-col justify-between">
-        <div className="h-16 sm:h-20 rounded-lg bg-gradient-to-tr from-rose-600/40 via-purple-600/30 to-amber-500/20 border border-rose-500/30 flex items-center justify-center text-center p-1">
-          <span className="text-[11px] sm:text-xs font-bold text-white drop-shadow">
-            Metaverse Stage
-          </span>
-        </div>
-        <div className="flex justify-between text-[8px] sm:text-[9px] text-neutral-400 mt-1.5">
-          <span>Live Keynote</span>
-          <span className="text-rose-400 font-medium">85k Viewers</span>
-        </div>
-      </div>
-
-      <div className="p-2 sm:p-2.5 rounded-xl bg-neutral-900/80 border border-rose-900/30 flex flex-col justify-between">
-        <div className="h-16 sm:h-20 rounded-lg bg-gradient-to-br from-purple-900/40 to-rose-950/60 border border-rose-500/20 flex flex-col items-center justify-center p-1 text-center">
-          <div className="text-[8px] text-rose-300">GENESIS DROP</div>
-          <div className="text-sm sm:text-base font-black text-white">SOLD OUT</div>
-          <div className="text-[8px] text-neutral-400">3,400 Editions</div>
-        </div>
-        <div className="flex justify-between text-[8px] sm:text-[9px] text-neutral-400 mt-1.5">
-          <span>Vol</span>
-          <span className="text-emerald-400 font-semibold">1,820 ETH</span>
-        </div>
-      </div>
-    </div>
-
-    {/* Bottom Footer */}
-    <div className="relative z-10 flex items-center justify-between pt-1.5 border-t border-rose-900/30 text-[8px] sm:text-[9px] text-neutral-400">
-      <span>120+ Curated Artists</span>
-      <span className="text-rose-400 font-mono">Concluded</span>
-    </div>
-  </div>
-);
-
-/* -------------------------------------------------------------------------- */
-/* MAIN PROJECTS SECTION COMPONENT                                            */
-/* -------------------------------------------------------------------------- */
 
 export const Projects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -622,13 +148,14 @@ export const Projects: React.FC = () => {
 
   return (
     <div id="projects" ref={triggerRef} className="relative w-full bg-[#0d0d0d] text-white select-none border-t border-neutral-900">
+      
       {/* Section Container matching exact padding & rhythm of Hero & About */}
       <section
         ref={containerRef}
         className="relative h-screen min-h-[640px] w-full bg-[#0d0d0d] text-white flex flex-col px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-16 lg:py-12 select-none overflow-hidden font-sans"
       >
         {/* Subtle Ambient Background Gradient */}
-        <div className="absolute inset-0 bg-radial-gradient from-neutral-900/30 to-transparent pointer-events-none" />
+        {/* <div className="absolute inset-0 bg-radial-gradient from-neutral-900/30 to-transparent pointer-events-none" /> */}
 
         {/* TOP BAR / SECTION HEADER */}
         <header className="relative z-20 flex items-center justify-between w-full shrink-0">
@@ -766,15 +293,15 @@ export const Projects: React.FC = () => {
           <div className="w-full lg:col-span-7 flex-1 h-[260px] sm:h-[340px] md:h-[400px] lg:h-[540px] max-h-[560px] relative rounded-2xl sm:rounded-3xl border border-neutral-800/90 bg-[#111111]/70 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col justify-between group">
             
             {/* Ambient project glowing backdrop */}
-            <div
+            {/* <div
               className="absolute inset-0 transition-opacity duration-700 opacity-20 pointer-events-none"
               style={{
                 background: `radial-gradient(circle at 60% 40%, ${activeProject.accentColor} 0%, transparent 70%)`,
               }}
-            />
+            /> */}
 
-            {/* STACK OF PROJECT PREVIEW MOCKUPS (Layered GSAP transition) */}
-            <div className="relative w-full flex-1 p-2.5 sm:p-4 md:p-5 overflow-hidden">
+            {/* STACK OF PROJECT PREVIEW SCREENSHOTS (Layered GSAP transition) */}
+            <div className="relative w-full flex-1 overflow-hidden">
               {PROJECTS_DATA.map((proj, idx) => {
                 const isCurrent = idx === activeIndex;
 
@@ -782,7 +309,7 @@ export const Projects: React.FC = () => {
                   <div
                     key={proj.id}
                     ref={(el) => (cardsRef.current[idx] = el)}
-                    className={`absolute inset-2.5 sm:inset-4 md:inset-5 transition-all duration-700 ease-out transform ${
+                    className={`absolute inset-0 transition-all duration-700 ease-out transform ${
                       isCurrent
                         ? "opacity-100 scale-100 pointer-events-auto z-10 translate-y-0"
                         : idx < activeIndex
@@ -790,21 +317,13 @@ export const Projects: React.FC = () => {
                         : "opacity-0 scale-105 pointer-events-none translate-y-4 z-0"
                     }`}
                   >
-                    {proj.type === "orion" && <OrionMockup />}
-                    {proj.type === "ennea" && <EnneaMockup />}
-                    {proj.type === "kia" && <KiaMockup />}
-                    {proj.type === "casino" && <CasinoMockup />}
-                    {proj.type === "nftfest" && <NftFestMockup />}
+                    <ProjectCard
+                      project={proj}
+                      onOpenDetails={() => setSelectedProjectModal(proj)}
+                    />
                   </div>
                 );
               })}
-
-              {/* Floating Center Cursor / Play Badge */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
-                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-neutral-900/80 border border-neutral-600/60 backdrop-blur-md flex items-center justify-center shadow-2xl">
-                  <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white shadow-[0_0_10px_#ffffff] animate-pulse" />
-                </div>
-              </div>
             </div>
 
             {/* FLOATING BOTTOM GLASS INFO BAR */}
@@ -835,27 +354,7 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* BOTTOM PAGINATION BAR */}
-        <div className="relative z-20 flex items-center justify-between w-full pt-2 shrink-0">
-          {/* Interactive Progress dots */}
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            {PROJECTS_DATA.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => scrollToProject(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === activeIndex
-                    ? "w-6 sm:w-8 bg-white"
-                    : "w-1.5 sm:w-2 bg-neutral-700 hover:bg-neutral-500"
-                }`}
-                aria-label={`Go to project ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <div className="text-[10px] sm:text-[11px] font-mono text-neutral-500">
-            {activeIndex + 1} OF {PROJECTS_DATA.length} PROJECTS
-          </div>
-        </div>
+        
       </section>
 
       {/* PROJECT DETAILS MODAL */}
