@@ -30,8 +30,8 @@ const PROJECTS_DATA: ProjectItem[] = [
     tags: ["Next.js 14", "FastAPI", "LangChain", "ChromaDB", "Supabase", "OpenAI"],
     gradient: "from-violet-950/40 via-neutral-900 to-neutral-950",
     accentColor: "#8b5cf6",
-    liveUrl: "https://TODO-add-live-url.example.com",
-    githubUrl: "https://github.com/TODO-your-repo",
+    liveUrl: undefined,
+    githubUrl: "https://github.com/lemix7",
     stats: [
       { label: "Retrieval", value: "Hybrid BM25 + MMR" },
       { label: "Reranking", value: "Cross-Encoder" },
@@ -93,6 +93,16 @@ export const Projects: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedProjectModal, setSelectedProjectModal] = useState<ProjectItem | null>(null);
 
+  // Close modal on Escape key
+  React.useEffect(() => {
+    if (!selectedProjectModal) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedProjectModal(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [selectedProjectModal]);
+
   // GSAP ScrollTrigger Setup
   useGSAP(
     () => {
@@ -101,28 +111,44 @@ export const Projects: React.FC = () => {
       const totalProjects = PROJECTS_DATA.length;
       if (totalProjects <= 1) return;
 
-      // Pin the section cleanly and scrub through project indices without anticipatePin jumping
-      const st = ScrollTrigger.create({
-        id: "projects-scroll-trigger",
-        trigger: triggerRef.current,
-        pin: containerRef.current || triggerRef.current,
-        start: "top top",
-        end: () => `+=${(totalProjects - 1) * window.innerHeight}`,
-        scrub: 0.5,
-        pinSpacing: true,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const newIndex = Math.min(
-            totalProjects - 1,
-            Math.max(0, Math.floor(progress * totalProjects))
-          );
-          setActiveIndex(newIndex);
-        },
+      const createPin = (scrollMultiplier: number, scrub: number) =>
+        ScrollTrigger.create({
+          id: "projects-scroll-trigger",
+          trigger: triggerRef.current,
+          // Pin the outer wrapper so pinSpacing can push the footer down.
+          // Pinning the inner overflow-hidden section clips the spacer and the footer overlaps.
+          pin: triggerRef.current,
+          anticipatePin: 1,
+          start: "top top",
+          end: () => `+=${(totalProjects - 1) * window.innerHeight * scrollMultiplier}`,
+          scrub,
+          pinSpacing: true,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const newIndex = Math.min(
+              totalProjects - 1,
+              Math.max(0, Math.round(self.progress * (totalProjects - 1)))
+            );
+            setActiveIndex((prev) => (prev === newIndex ? prev : newIndex));
+          },
+        });
+
+      const mm = gsap.matchMedia();
+
+      mm.add("(max-width: 767px)", () => {
+        const st = createPin(1.35, 1.15);
+        return () => st.kill();
       });
 
+      mm.add("(min-width: 768px)", () => {
+        const st = createPin(1, 0.7);
+        return () => st.kill();
+      });
+
+      requestAnimationFrame(() => ScrollTrigger.refresh());
+
       return () => {
-        st.kill();
+        mm.revert();
       };
     },
     { scope: triggerRef }
@@ -148,7 +174,7 @@ export const Projects: React.FC = () => {
   const activeProject = PROJECTS_DATA[activeIndex] || PROJECTS_DATA[0];
 
   return (
-    <div id="projects" ref={triggerRef} className="relative w-full bg-[#0d0d0d] text-white select-none border-t border-neutral-900">
+    <div id="projects" ref={triggerRef} className="relative z-10 w-full bg-[#0d0d0d] text-white select-none border-t border-neutral-900">
       
       {/* Section Container matching exact padding & rhythm of Hero & About */}
       <section
@@ -282,7 +308,7 @@ export const Projects: React.FC = () => {
               {/* Mobile Quick Action Pill */}
               <button
                 onClick={() => setSelectedProjectModal(activeProject)}
-                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-neutral-700 bg-neutral-900 text-xs font-semibold text-white hover:bg-white hover:text-black transition-all shadow-md active:scale-95"
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-neutral-400/80 bg-transparent text-xs font-medium tracking-wider uppercase text-white hover:bg-white hover:text-black hover:border-white transition-all shadow-sm active:scale-95"
               >
                 <span>Details</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -310,12 +336,12 @@ export const Projects: React.FC = () => {
                   <div
                     key={proj.id}
                     ref={(el) => (cardsRef.current[idx] = el)}
-                    className={`absolute inset-0 transition-all duration-700 ease-out transform ${
+                    className={`absolute inset-0 will-change-transform transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                       isCurrent
                         ? "opacity-100 scale-100 pointer-events-auto z-10 translate-y-0"
                         : idx < activeIndex
-                        ? "opacity-0 scale-95 pointer-events-none -translate-y-4 z-0"
-                        : "opacity-0 scale-105 pointer-events-none translate-y-4 z-0"
+                        ? "opacity-0 scale-95 pointer-events-none -translate-y-3 z-0"
+                        : "opacity-0 scale-105 pointer-events-none translate-y-3 z-0"
                     }`}
                   >
                     <ProjectCard
@@ -344,7 +370,7 @@ export const Projects: React.FC = () => {
               {/* Action Button: "View Project ↗" */}
               <button
                 onClick={() => setSelectedProjectModal(activeProject)}
-                className="group/btn inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full border border-neutral-700 bg-neutral-900/90 text-xs sm:text-sm font-semibold tracking-wide text-neutral-200 hover:text-black hover:bg-white hover:border-white transition-all duration-300 shrink-0 shadow-lg active:scale-95"
+                className="group/btn inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full border border-neutral-400/80 bg-transparent text-xs sm:text-sm font-medium tracking-wider uppercase text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 shrink-0 shadow-sm active:scale-95"
               >
                 <span className="whitespace-nowrap">View Project</span>
                 <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-200" />
@@ -432,7 +458,7 @@ export const Projects: React.FC = () => {
                   href={selectedProjectModal.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-700 bg-neutral-900 hover:bg-neutral-800 text-xs font-medium text-neutral-200 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-400/80 bg-transparent hover:bg-white hover:text-black hover:border-white text-xs font-medium tracking-wider uppercase text-white transition-all duration-300 active:scale-95"
                 >
                   <Github className="w-3.5 h-3.5" />
                   <span>Source Code</span>

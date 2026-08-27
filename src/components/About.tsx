@@ -24,9 +24,6 @@ export const About: React.FC<AboutProps> = ({
   paragraph2 = "Over the years, I've worked across the full spectrum of software development — from modern full-stack web applications, authentication & security, and scalable databases to cloud infrastructure, APIs, and AI integrations. Everything I have engineered has been a vital stepping stone for crafting robust, high-performance digital products.",
   paragraph3 = "What excites me most about engineering is creating systems that have purpose and solve real problems under real-world conditions. Managing operations at a factory alongside software engineering has fundamentally shaped my philosophy: thinking in systems, spotting bottlenecks before they emerge, and delivering resilient, high-value solutions. I work fluently in both English and Arabic, always eager to take on the next challenging problem to deconstruct and rebuild.",
   skills = [
-    "Full-Stack Engineering",
-    "AI Applications",
-    "RAG Architecture",
     "React & Next.js",
     "TypeScript",
     "Python & FastAPI",
@@ -35,10 +32,9 @@ export const About: React.FC<AboutProps> = ({
     "Cloud & DevOps",
     "Tailwind CSS",
     "GSAP",
-    "REST & GraphQL",
+    "REST API",
     "Security & Auth",
     "UI/UX Prototyping",
-    "Operations Management",
   ],
 }) => {
   return (
@@ -97,10 +93,10 @@ export const About: React.FC<AboutProps> = ({
 
 
         {/* SKILLS SECTION */}
-        <div className="pt-4 border-t flex flex-col gap-4 border-neutral-800/60">
+        <div className="pt-4  flex flex-col gap-2 border-neutral-800/60">
           <TextReveal
             as="h4"
-            className="text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase text-white mb-2 sm:mb-2"
+            className="text-sm sm:text-lg font-semibold tracking-[0.25em] uppercase text-white"
             duration={1}
             ease="power4.out"
             animateOnScroll={true}
@@ -118,7 +114,7 @@ export const About: React.FC<AboutProps> = ({
             animateOnScroll={true}
             splitType="lines"
           >
-            <span>{skills.join("  /  ")}</span>
+            <span>{skills.join("  ,  ")}</span>
           </TextReveal>
         </div>
 

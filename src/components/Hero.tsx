@@ -14,7 +14,9 @@ export const Hero: React.FC<HeroProps> = ({
   name = "Ahmad Alosayli",
   titleLine1 = "FULL-STACK",
   titleLine2 = "DEVELOPER",
-  resumeUrl = "/Ahmad_Sabil_Resume.pdf",
+  statusText = "Open to Work",
+  locationText = "Based in saudi arabia",
+  resumeUrl = "/my-cv.pdf",
 }) => {
   return (
     <section className="relative h-screen min-h-[640px] w-full bg-[#0d0d0d] text-white flex flex-col justify-between px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-16 lg:py-12 select-none overflow-hidden font-sans">
@@ -28,22 +30,24 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="flex flex-col">
           <a
             href="#"
-            className="text-base sm:text-2xl md:text-4xl font-normal tracking-tight text-white/95 hover:text-white transition-colors"
+            className="text-base sm:text-2xl  md:text-4xl font-normal tracking-tight text-white/95 hover:text-white transition-colors"
           >
             {name}
           </a>
         </div>
 
-        {/* Resume Pill Button */}
-        <a
-          href={resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1.5 px-6 py-2 rounded-full border border-neutral-700 bg-neutral-900/60 backdrop-blur-sm text-[14px] font-semibold tracking-wider  text-neutral-300 hover:text-white hover:border-neutral-400 transition-all duration-200"
-        >
-          <span>Resume</span>
-          
-        </a>
+        {/* Nav actions: Resume */}
+        <div className="flex items-center gap-3">
+          <a
+            href={resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center h-7 px-3 sm:h-9 sm:px-5 md:h-10 md:px-6 rounded-full border border-neutral-400/80 hover:border-white bg-transparent hover:bg-white text-white hover:text-black transition-all duration-300 shadow-sm active:scale-95 text-[10px] sm:text-[13px] md:text-[14px] font-medium tracking-[0.12em] uppercase leading-none"
+          >
+            <span>Resume</span>
+          </a>
+       
+        </div>
       </header>
 
       {/* CENTER HERO MAIN HEADLINE */}
@@ -67,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({
 
   
       {/* BOTTOM BAR */}
-      <div className="relative z-20 flex flex-row items-end justify-between w-full">
+      <div className="relative z-20 flex flex-row items-center justify-between w-full">
 
         {/* Left: Rotating Circular "SCROLL DOWN" Badge */}
         <div className="relative flex items-center justify-center">
@@ -97,20 +101,18 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
         </div>
 
-        {/* Right: "OPEN TO WORK" & Location Status */}
-        {/* <div className="flex flex-col items-end text-right">
-          <div className="flex items-center gap-2 text-white">
-            <span className="font-extrabold text-base sm:text-lg md:text-xl lg:text-2xl tracking-tight uppercase">
+        {/* Right: Availability & Location */}
+        <div className="flex flex-col items-end text-right">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]" />
+            <span className="text-xs sm:text-sm font-medium tracking-widest uppercase text-white">
               {statusText}
             </span>
-            <span className="text-white text-xl sm:text-2xl md:text-3xl leading-none">
-              ✱
-            </span>
           </div>
-          <p className="text-xs sm:text-sm text-neutral-400 font-normal tracking-wide mt-1">
+          <p className="text-xs sm:text-sm capitalize text-neutral-500 font-normal tracking-wide mt-1">
             {locationText}
           </p>
-        </div> */}
+        </div>
 
       </div>
     </section>

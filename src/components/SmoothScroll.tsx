@@ -33,10 +33,12 @@ export const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
     gsap.ticker.add(updateTicker);
     gsap.ticker.lagSmoothing(0);
 
-    // Initial refresh to sync heights
-    ScrollTrigger.refresh();
+    const refresh = () => ScrollTrigger.refresh();
+    requestAnimationFrame(refresh);
+    window.addEventListener("load", refresh);
 
     return () => {
+      window.removeEventListener("load", refresh);
       gsap.ticker.remove(updateTicker);
       lenis.destroy();
     };

@@ -13,44 +13,42 @@ export interface FooterProps {
 }
 
 const DEFAULT_LINKS: FooterLink[] = [
-  { label: "Blog", href: "https://blog.example.com", external: true },
-  { label: "Linkedin", href: "https://linkedin.com", external: true },
-  { label: "Malt", href: "https://malt.fr", external: true },
-  { label: "Github", href: "https://github.com", external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ahmad-sapil-576732380/?skipRedirect=true", external: true },
+  { label: "Github", href: "https://github.com/lemix7", external: true },
 ];
 
 export const Footer: React.FC<FooterProps> = ({
-  contactEmail = "mailto:ahmad@example.com",
+  contactEmail = "mailto:hello@ahmadalosayli.com",
   links = DEFAULT_LINKS,
 }) => {
   return (
-    <footer className="relative w-full bg-[#0d0d0d] text-white  border-neutral-900 px-6 py-16 sm:px-10 sm:py-20 md:px-14 md:py-20 lg:px-16 lg:py-28 select-none overflow-hidden font-sans">
+    <footer className="relative z-0 w-full bg-[#0d0d0d] text-white border-t border-neutral-900 px-6 py-16 sm:px-10 sm:py-20 md:px-14 md:py-20 lg:px-16 lg:py-28 select-none overflow-hidden font-sans">
       {/* Main Footer Row */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10 md:gap-6 w-full">
+      <div className="flex flex-row items-center justify-between gap-4 sm:gap-6 w-full">
         {/* Left: GET IN TOUCH Pill Button */}
-        <div className="flex items-center">
+        <div className="flex items-center shrink-0">
           <a
             href={contactEmail}
-            className="group inline-flex items-center justify-center px-7 py-3.5 sm:px-9 sm:py-4 md:px-11 md:py-5 rounded-full border border-neutral-400/80 hover:border-white bg-transparent hover:bg-white text-white hover:text-black transition-all duration-300 shadow-sm active:scale-95"
+            className="group inline-flex items-center justify-center h-7 px-3 sm:h-10 sm:px-6 md:h-auto md:px-11 md:py-5 rounded-full border border-neutral-400/80 hover:border-white bg-transparent hover:bg-white text-white hover:text-black transition-all duration-300 shadow-sm active:scale-95"
           >
-            <span className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight uppercase">
+            <span className="text-[10px] sm:text-base md:text-3xl lg:text-4xl font-medium tracking-[0.08em] md:tracking-tight uppercase leading-none">
               GET IN TOUCH
             </span>
           </a>
         </div>
 
-        {/* Right: Vertical List of Links with Arrow */}
-        <div className="flex flex-col space-y-3 sm:space-y-4 md:space-y-5">
+        {/* Right: List of Links with Arrow */}
+        <div className="flex flex-col items-end space-y-1.5 sm:space-y-3 md:space-y-5">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className="group inline-flex items-center gap-1.5 text-base sm:text-xl md:text-2xl font-light text-neutral-300 hover:text-white transition-colors duration-200"
+              className="group inline-flex items-center gap-1 text-xs sm:text-xl md:text-2xl font-light text-neutral-300 hover:text-white transition-colors duration-200"
             >
               <span>{link.label}</span>
-              <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+              <ArrowUpRight className="w-3 h-3 sm:w-5 sm:h-5 text-neutral-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
             </a>
           ))}
         </div>
