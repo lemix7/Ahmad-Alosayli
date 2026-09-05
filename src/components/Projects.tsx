@@ -31,7 +31,7 @@ const PROJECTS_DATA: ProjectItem[] = [
     gradient: "from-violet-950/40 via-neutral-900 to-neutral-950",
     accentColor: "#8b5cf6",
     liveUrl: undefined,
-    githubUrl: "https://github.com/lemix7",
+    githubUrl: "https://github.com/lemix7/RAG-LMX",
     stats: [
       { label: "Retrieval", value: "Hybrid BM25 + MMR" },
       { label: "Reranking", value: "Cross-Encoder" },
@@ -40,49 +40,27 @@ const PROJECTS_DATA: ProjectItem[] = [
     type: "ennea",
   },
   {
-    id: "casino",
+    id: "scrolla",
     number: "02",
-    year: "2023",
-    title: "CASINO",
-    subtitle: "Play & Earn",
-    category: "CRYPTO PLATFORM",
-    categoryTag: "CRYPTO PLATFORM →",
+    year: "2025",
+    title: "SCROLLA",
+    subtitle: "Share Your Moments",
+    category: "SOCIAL MEDIA API",
+    categoryTag: "SOCIAL MEDIA API →",
     description:
-      "Provably fair decentralized gaming platform with instant on-chain settlement, real-time multiplayer lobbies, and audited smart contracts.",
-    tags: ["React", "Node.js", "Socket.io", "PostgreSQL", "Web3.js", "Tailwind CSS"],
-    gradient: "from-amber-950/40 via-neutral-900 to-neutral-950",
-    accentColor: "#f59e0b",
-    liveUrl: "https://casino-web3.example.com",
-    githubUrl: "https://github.com",
+      "Modern async social feed API with JWT authentication, cloud-based media uploads, and a fully asynchronous backend for high-performance chronological feeds.",
+    tags: ["FastAPI", "Python", "SQLAlchemy", "SQLite", "FastAPI-Users", "ImageKit", "JWT"],
+    gradient: "from-sky-950/40 via-neutral-900 to-neutral-950",
+    accentColor: "#0ea5e9",
+    githubUrl: "https://github.com/lemix7/Scrolla",
     stats: [
-      { label: "Jackpot Pool", value: "$1.48M" },
-      { label: "Provably Fair", value: "100% Audited" },
-      { label: "Active Players", value: "48,200+" },
+      { label: "Auth", value: "JWT-Based" },
+      { label: "Media", value: "Image + Video" },
+      { label: "Backend", value: "Fully Async" },
     ],
-    type: "casino",
+    type: "scrolla",
   },
-  {
-    id: "nftfest",
-    number: "03",
-    year: "2023",
-    title: "NFT FEST",
-    subtitle: "Digital Art Festival",
-    category: "WEB3 EVENT",
-    categoryTag: "WEB3 EVENT →",
-    description:
-      "Interactive international digital art festival platform featuring live VR galleries, generative art drops, and dynamic pass ticketing.",
-    tags: ["React", "GSAP ScrollTrigger", "WebXR", "Supabase", "Tailwind CSS"],
-    gradient: "from-rose-950/40 via-neutral-900 to-neutral-950",
-    accentColor: "#f43f5e",
-    liveUrl: "https://nftfest-global.example.com",
-    githubUrl: "https://github.com",
-    stats: [
-      { label: "Featured Artists", value: "120+" },
-      { label: "Virtual Attendees", value: "85,000" },
-      { label: "Artworks Minted", value: "3,400+" },
-    ],
-    type: "nftfest",
-  },
+  
 ];
 
 
@@ -447,12 +425,12 @@ export const Projects: React.FC = () => {
 
             {/* Actions */}
             <div className="flex items-center justify-end gap-2.5 sm:gap-3 pt-3 sm:pt-4 border-t border-neutral-800">
-              <button
+              {/* <button
                 onClick={() => setSelectedProjectModal(null)}
                 className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-medium text-neutral-400 hover:text-white transition-colors"
               >
                 Close
-              </button>
+              </button> */}
               {selectedProjectModal.githubUrl && (
                 <a
                   href={selectedProjectModal.githubUrl}
