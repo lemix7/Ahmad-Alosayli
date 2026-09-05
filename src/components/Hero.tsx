@@ -1,5 +1,6 @@
-import React from 'react';
-import TextReveal from './TextReveal';
+import React from "react";
+import TextReveal from "./TextReveal";
+import AnimatedGradient from "./AnimatedGradadient";
 
 interface HeroProps {
   name?: string;
@@ -19,10 +20,8 @@ export const Hero: React.FC<HeroProps> = ({
   resumeUrl = "/my-cv.pdf",
 }) => {
   return (
-    <section className="relative h-screen min-h-[640px] w-full bg-[#0d0d0d] text-white flex flex-col justify-between px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-16 lg:py-12 select-none overflow-hidden font-sans">
-
-      {/* Subtle background ambient grain & gradient */}
-      <div className="absolute inset-0 bg-radial-gradient from-neutral-900/30 to-transparent pointer-events-none" />
+    <section className="relative h-screen min-h-[640px] w-full bg-transparent text-white flex flex-col justify-between px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-16 lg:py-12 select-none overflow-hidden font-sans">
+      <AnimatedGradient config={{ preset: "Prism" }} />
 
       {/* TOP NAVIGATION / HEADER */}
       <header className="relative z-20 flex items-center justify-between w-full">
@@ -42,11 +41,10 @@ export const Hero: React.FC<HeroProps> = ({
             href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center h-7 px-3 sm:h-9 sm:px-5 md:h-10 md:px-6 rounded-full border border-neutral-400/80 hover:border-white bg-transparent hover:bg-white text-white hover:text-black transition-all duration-300 shadow-sm active:scale-95 text-[10px] sm:text-[13px] md:text-[14px] font-medium tracking-[0.12em] uppercase leading-none"
+            className="group inline-flex items-center justify-center px-4 py-2  sm:px-5 sm:py-2  rounded-full border border-neutral-400/80 hover:border-white bg-transparent hover:bg-white text-white hover:text-black transition-all duration-300 shadow-sm active:scale-95 text-sm sm:text-base  font-medium tracking-tight leading-none"
           >
             <span>Resume</span>
           </a>
-       
         </div>
       </header>
 
@@ -60,19 +58,13 @@ export const Hero: React.FC<HeroProps> = ({
           delay={0.1}
           ease="power4.out"
         >
-          <span className="block">
-            {titleLine1}
-          </span>
-          <span className="block">
-            {titleLine2}
-          </span>
+          <span className="block">{titleLine1}</span>
+          <span className="block">{titleLine2}</span>
         </TextReveal>
       </main>
 
-  
       {/* BOTTOM BAR */}
       <div className="relative z-20 flex flex-row items-center justify-between w-full">
-
         {/* Left: Rotating Circular "SCROLL DOWN" Badge */}
         <div className="relative flex items-center justify-center">
           <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center">
@@ -113,7 +105,6 @@ export const Hero: React.FC<HeroProps> = ({
             {locationText}
           </p>
         </div>
-
       </div>
     </section>
   );

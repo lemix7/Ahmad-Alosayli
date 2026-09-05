@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({
   links = DEFAULT_LINKS,
 }) => {
   return (
-    <footer className="relative z-0 w-full bg-[#0d0d0d] text-white border-t border-neutral-900 px-6 py-16 sm:px-10 sm:py-20 md:px-14 md:py-20 lg:px-16 lg:py-28 select-none overflow-hidden font-sans">
+    <footer className="relative z-0 w-full bg-gradient-dark text-white border-t border-neutral-900 px-6 py-16 sm:px-10 sm:py-20 md:px-14 md:py-20 lg:px-16 lg:py-28 select-none overflow-hidden font-sans">
       {/* Main Footer Row */}
       <div className="flex flex-row items-center justify-between gap-4 sm:gap-6 w-full">
         

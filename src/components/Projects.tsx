@@ -179,7 +179,7 @@ export const Projects: React.FC = () => {
       {/* Section Container matching exact padding & rhythm of Hero & About */}
       <section
         ref={containerRef}
-        className="relative h-screen min-h-[640px] w-full bg-[#0d0d0d] text-white flex flex-col px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-16 lg:py-12 select-none overflow-hidden font-sans"
+        className="relative h-screen min-h-[640px] w-full bg-gradient-dark text-white flex flex-col px-6 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-16 lg:py-12 select-none overflow-hidden font-sans"
       >
         {/* Subtle Ambient Background Gradient */}
         {/* <div className="absolute inset-0 bg-radial-gradient from-neutral-900/30 to-transparent pointer-events-none" /> */}
@@ -188,7 +188,7 @@ export const Projects: React.FC = () => {
         <header className="relative z-20 flex items-center justify-between w-full shrink-0">
           <TextReveal
             as="h2"
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-tight text-white"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-tight text-gradient-primary "
             duration={1}
             ease="power4.out"
             animateOnScroll={true}
