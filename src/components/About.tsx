@@ -35,19 +35,16 @@ export const About: React.FC<AboutProps> = ({
 }) => {
   return (
     <section className="relative min-h-screen w-full bg-gradient-dark text-white flex flex-col px-6 py-16 sm:px-10 sm:py-20 md:px-14 md:py-20 lg:px-16 lg:py-28  font-sans overflow-hidden select-none">
-     
       {/* Subtle ambient gradient */}
       <div className="absolute inset-0 bg-radial-gradient from-neutral-900/20 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl lg:max-w-5xl w-full flex flex-col gap-6  sm:gap-8 ">
-        
         <div className="flex flex-col gap-6 sm:gap-6 ">
-          
           {/* Section Header — kept exactly as before */}
           <div className="flex flex-col space-y-4 ">
             <TextReveal
               as="h2"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase font-bold tracking-tight text-gradient-primary"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl uppercase font-bold tracking-tight text-gradient-primary"
               duration={1}
               ease="power4.out"
               animateOnScroll={true}
@@ -58,7 +55,7 @@ export const About: React.FC<AboutProps> = ({
             <div className=" overflow-hidden">
               <TextReveal
                 as="h3"
-                className="text-xl sm:text-4xl md:text-5xl lg:text-5xl font-light text-neutral-100 leading-[1.18] tracking-tight"
+                className="text-xl sm:text-xl md:text-2xl lg:text-3xl  text-neutral-100 leading-[1.18] tracking-tight"
                 duration={1.1}
                 ease="power4.out"
                 animateOnScroll={true}
@@ -70,7 +67,7 @@ export const About: React.FC<AboutProps> = ({
             </div>
           </div>
 
-            {/* Narrative Paragraphs */}
+          {/* Narrative Paragraphs */}
           <div className="flex flex-col gap-4">
             <TextReveal
               as="div"
@@ -85,22 +82,21 @@ export const About: React.FC<AboutProps> = ({
               {/* <p className="text-neutral-300 font-light text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
                 {paragraph1}
               </p> */}
-              <p className="text-neutral-300 font-light text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
+              <p className="text-neutral-300  text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
                 {paragraph2}
               </p>
-              <p className="text-neutral-300 font-light text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
+              <p className="text-neutral-300  text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
                 {paragraph3}
               </p>
             </TextReveal>
           </div>
-
         </div>
 
         {/* SKILLS SECTION */}
         <div className="pt-4  flex flex-col gap-2 border-neutral-800/60">
           <TextReveal
             as="h4"
-            className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold  uppercase text-gradient-primary "
+            className="text-3xl sm:text-xl md:text-2xl lg:text-3xl font-bold  uppercase text-gradient-primary "
             duration={1}
             ease="power4.out"
             animateOnScroll={true}
@@ -110,7 +106,7 @@ export const About: React.FC<AboutProps> = ({
 
           <TextReveal
             as="p"
-            className="text-neutral-300 font-light text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.9]"
+            className="text-neutral-300  text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.9]"
             duration={1}
             stagger={0.06}
             delay={0.05}
@@ -121,7 +117,6 @@ export const About: React.FC<AboutProps> = ({
             <span>{skills.join("  ,  ")}</span>
           </TextReveal>
         </div>
-
       </div>
     </section>
   );
