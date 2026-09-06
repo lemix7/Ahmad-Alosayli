@@ -62,7 +62,7 @@ export interface TextRevealProps {
 
 /**
  * TextReveal Component
- * 
+ *
  * Reveals text with a smooth sliding mask animation powered by GSAP SplitText & ScrollTrigger.
  */
 export default function TextReveal({
@@ -91,13 +91,190 @@ export default function TextReveal({
   const targetsRef = useRef<HTMLElement[]>([]);
   const isCompletedRef = useRef(false);
 
+  // useGSAP(
+  //   () => {
+  //     if (disabled || !containerRef.current || typeof window === "undefined") return;
+
+  //     isCompletedRef.current = false;
+  //     let tween: gsap.core.Tween | null = null;
+
+  //     const createSplits = () => {
+  //       splitRefs.current.forEach((split) => {
+  //         if (split && typeof split.revert === "function") {
+  //           split.revert();
+  //         }
+  //       });
+  //       splitRefs.current = [];
+  //       targetsRef.current = [];
+
+  //       // Determine which DOM elements to split
+  //       let elements: HTMLElement[] = [];
+  //       if (containerRef.current?.hasAttribute("data-reveal-wrapper")) {
+  //         elements = Array.from(containerRef.current.children) as HTMLElement[];
+  //       } else if (containerRef.current) {
+  //         elements = [containerRef.current as HTMLElement];
+  //       }
+
+  //       // Filter out non-element nodes or elements without text
+  //       elements = elements.filter(
+  //         (el) => el && el.nodeType === Node.ELEMENT_NODE && (el.textContent || "").trim().length > 0
+  //       );
+
+  //       if (elements.length === 0) return;
+
+  //       elements.forEach((element) => {
+  //         // Create SplitText instance
+  //         const splitConfig: SplitText.Vars = {
+  //           type: splitType,
+  //           lineThreshold,
+  //         };
+
+  //         if (splitType.includes("lines")) {
+  //           splitConfig.linesClass = lineClass;
+  //           if (mask) {
+  //             splitConfig.mask = "lines";
+  //           }
+  //         }
+  //         if (splitType.includes("words")) {
+  //           splitConfig.wordsClass = "word++";
+  //         }
+  //         if (splitType.includes("chars")) {
+  //           splitConfig.charsClass = "char++";
+  //         }
+
+  //         const split = SplitText.create(element, splitConfig);
+  //         splitRefs.current.push(split);
+
+  //         // Handle CSS text-indent if present on the element
+  //         const computedStyle = window.getComputedStyle(element);
+  //         const textIndent = computedStyle.textIndent;
+  //         if (textIndent && textIndent !== "0px" && split.lines && split.lines.length > 0) {
+  //           (split.lines[0] as HTMLElement).style.paddingLeft = textIndent;
+  //           element.style.textIndent = "0";
+  //         }
+
+  //         // Collect animation targets based on splitType
+  //         let targets: HTMLElement[] = [];
+  //         if (splitType.includes("chars") && split.chars && split.chars.length > 0) {
+  //           targets = split.chars as HTMLElement[];
+  //         } else if (splitType.includes("words") && split.words && split.words.length > 0) {
+  //           targets = split.words as HTMLElement[];
+  //         } else if (split.lines && split.lines.length > 0) {
+  //           targets = split.lines as HTMLElement[];
+  //         }
+
+  //         targets.forEach((target) => {
+  //           target.style.willChange = "transform";
+  //         });
+
+  //         targetsRef.current.push(...targets);
+  //       });
+
+  //       if (targetsRef.current.length === 0) return;
+
+  //       // Set initial position
+  //       gsap.set(targetsRef.current, { y });
+  //     };
+
+  //     createSplits();
+
+  //     if (targetsRef.current.length === 0) return;
+
+  //     const handleComplete = () => {
+  //       isCompletedRef.current = true;
+  //       if (revertOnComplete) {
+  //         splitRefs.current.forEach((split) => {
+  //           if (split && typeof split.revert === "function") {
+  //             split.revert();
+  //           }
+  //         });
+  //         splitRefs.current = [];
+  //         targetsRef.current = [];
+  //       }
+  //       onComplete?.();
+  //     };
+
+  //     const animationProps: gsap.TweenVars = {
+  //       y: "0%",
+  //       duration,
+  //       stagger,
+  //       ease,
+  //       delay,
+  //       onStart,
+  //       onComplete: handleComplete,
+  //     };
+
+  //     const startAnimation = () => {
+  //       if (animateOnScroll) {
+  //         tween = gsap.to(targetsRef.current, {
+  //           ...animationProps,
+  //           scrollTrigger: {
+  //             trigger: containerRef.current,
+  //             start: "top 75%",
+  //             once: true,
+  //             ...scrollTrigger,
+  //           },
+  //         });
+  //       } else {
+  //         tween = gsap.to(targetsRef.current, animationProps);
+  //       }
+  //     };
+
+  //     startAnimation();
+
+  //     // Debounced resize handler for pre-animation responsive reflow
+  //     let resizeTimeout: ReturnType<typeof setTimeout>;
+  //     const handleResize = () => {
+  //       if (isCompletedRef.current) return;
+  //       clearTimeout(resizeTimeout);
+  //       resizeTimeout = setTimeout(() => {
+  //         if (isCompletedRef.current || !containerRef.current) return;
+  //         if (tween) {
+  //           tween.kill();
+  //         }
+  //         createSplits();
+  //         startAnimation();
+  //       }, 150);
+  //     };
+
+  //     window.addEventListener("resize", handleResize);
+
+  //     return () => {
+  //       window.removeEventListener("resize", handleResize);
+  //       clearTimeout(resizeTimeout);
+  //       if (tween) tween.kill();
+  //       splitRefs.current.forEach((split) => {
+  //         if (split && typeof split.revert === "function") {
+  //           split.revert();
+  //         }
+  //       });
+  //     };
+  //   },
+  //   {
+  //     scope: containerRef,
+  //     dependencies: [
+  //       animateOnScroll,
+  //       delay,
+  //       duration,
+  //       stagger,
+  //       ease,
+  //       y,
+  //       splitType,
+  //       mask,
+  //       disabled,
+  //       revertOnComplete,
+  //     ],
+  //   }
+  // );
+
   useGSAP(
     () => {
-      if (disabled || !containerRef.current || typeof window === "undefined") return;
-
+      if (disabled || !containerRef.current || typeof window === "undefined")
+        return;
+  
       isCompletedRef.current = false;
       let tween: gsap.core.Tween | null = null;
-
+  
       const createSplits = () => {
         splitRefs.current.forEach((split) => {
           if (split && typeof split.revert === "function") {
@@ -106,7 +283,7 @@ export default function TextReveal({
         });
         splitRefs.current = [];
         targetsRef.current = [];
-
+  
         // Determine which DOM elements to split
         let elements: HTMLElement[] = [];
         if (containerRef.current?.hasAttribute("data-reveal-wrapper")) {
@@ -114,21 +291,20 @@ export default function TextReveal({
         } else if (containerRef.current) {
           elements = [containerRef.current as HTMLElement];
         }
-
+  
         // Filter out non-element nodes or elements without text
         elements = elements.filter(
           (el) => el && el.nodeType === Node.ELEMENT_NODE && (el.textContent || "").trim().length > 0
         );
-
+  
         if (elements.length === 0) return;
-
+  
         elements.forEach((element) => {
-          // Create SplitText instance
           const splitConfig: SplitText.Vars = {
             type: splitType,
             lineThreshold,
           };
-
+  
           if (splitType.includes("lines")) {
             splitConfig.linesClass = lineClass;
             if (mask) {
@@ -141,19 +317,17 @@ export default function TextReveal({
           if (splitType.includes("chars")) {
             splitConfig.charsClass = "char++";
           }
-
+  
           const split = SplitText.create(element, splitConfig);
           splitRefs.current.push(split);
-
-          // Handle CSS text-indent if present on the element
+  
           const computedStyle = window.getComputedStyle(element);
           const textIndent = computedStyle.textIndent;
           if (textIndent && textIndent !== "0px" && split.lines && split.lines.length > 0) {
             (split.lines[0] as HTMLElement).style.paddingLeft = textIndent;
             element.style.textIndent = "0";
           }
-
-          // Collect animation targets based on splitType
+  
           let targets: HTMLElement[] = [];
           if (splitType.includes("chars") && split.chars && split.chars.length > 0) {
             targets = split.chars as HTMLElement[];
@@ -162,49 +336,45 @@ export default function TextReveal({
           } else if (split.lines && split.lines.length > 0) {
             targets = split.lines as HTMLElement[];
           }
-
+  
           targets.forEach((target) => {
             target.style.willChange = "transform";
           });
-
+  
           targetsRef.current.push(...targets);
         });
-
+  
         if (targetsRef.current.length === 0) return;
-
-        // Set initial position
+  
         gsap.set(targetsRef.current, { y });
       };
-
-      createSplits();
-
-      if (targetsRef.current.length === 0) return;
-
-      const handleComplete = () => {
-        isCompletedRef.current = true;
-        if (revertOnComplete) {
-          splitRefs.current.forEach((split) => {
-            if (split && typeof split.revert === "function") {
-              split.revert();
-            }
-          });
-          splitRefs.current = [];
-          targetsRef.current = [];
-        }
-        onComplete?.();
-      };
-
-      const animationProps: gsap.TweenVars = {
-        y: "0%",
-        duration,
-        stagger,
-        ease,
-        delay,
-        onStart,
-        onComplete: handleComplete,
-      };
-
-      const startAnimation = () => {
+  
+      const runSetup = () => {
+        createSplits();
+        if (targetsRef.current.length === 0) return;
+  
+        const handleComplete = () => {
+          isCompletedRef.current = true;
+          if (revertOnComplete) {
+            splitRefs.current.forEach((split) => {
+              if (split && typeof split.revert === "function") split.revert();
+            });
+            splitRefs.current = [];
+            targetsRef.current = [];
+          }
+          onComplete?.();
+        };
+  
+        const animationProps: gsap.TweenVars = {
+          y: "0%",
+          duration,
+          stagger,
+          ease,
+          delay,
+          onStart,
+          onComplete: handleComplete,
+        };
+  
         if (animateOnScroll) {
           tween = gsap.to(targetsRef.current, {
             ...animationProps,
@@ -219,34 +389,36 @@ export default function TextReveal({
           tween = gsap.to(targetsRef.current, animationProps);
         }
       };
-
-      startAnimation();
-
-      // Debounced resize handler for pre-animation responsive reflow
+  
+      const fontsReady = document.fonts?.ready ?? Promise.resolve();
+      let cancelled = false;
+  
+      fontsReady.then(() => {
+        if (cancelled || !containerRef.current) return;
+        runSetup();
+        ScrollTrigger.refresh();
+      });
+  
       let resizeTimeout: ReturnType<typeof setTimeout>;
       const handleResize = () => {
         if (isCompletedRef.current) return;
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
           if (isCompletedRef.current || !containerRef.current) return;
-          if (tween) {
-            tween.kill();
-          }
-          createSplits();
-          startAnimation();
+          if (tween) tween.kill();
+          runSetup();
         }, 150);
       };
-
+  
       window.addEventListener("resize", handleResize);
-
+  
       return () => {
+        cancelled = true;
         window.removeEventListener("resize", handleResize);
         clearTimeout(resizeTimeout);
         if (tween) tween.kill();
         splitRefs.current.forEach((split) => {
-          if (split && typeof split.revert === "function") {
-            split.revert();
-          }
+          if (split && typeof split.revert === "function") split.revert();
         });
       };
     },
@@ -264,7 +436,7 @@ export default function TextReveal({
         disabled,
         revertOnComplete,
       ],
-    }
+    },
   );
 
   // If a single valid React element was provided (e.g. <h1>Title</h1>), clone it and attach ref
@@ -276,7 +448,9 @@ export default function TextReveal({
     }>;
     return React.cloneElement(child, {
       ref: containerRef,
-      className: [child.props.className, className].filter(Boolean).join(" ") || undefined,
+      className:
+        [child.props.className, className].filter(Boolean).join(" ") ||
+        undefined,
       style: { ...child.props.style, ...style },
     });
   }
