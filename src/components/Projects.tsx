@@ -2,12 +2,7 @@ import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import {
-  ExternalLink,
-  ArrowUpRight,
-  Github,
-  X,
-} from "lucide-react";
+import { ExternalLink, ArrowUpRight, Github, X } from "lucide-react";
 import TextReveal from "./TextReveal";
 import { ProjectCard, ProjectItem } from "./ProjectCard";
 
@@ -16,7 +11,6 @@ if (typeof window !== "undefined") {
 }
 
 const PROJECTS_DATA: ProjectItem[] = [
- 
   {
     id: "RAG",
     number: "01",
@@ -27,7 +21,14 @@ const PROJECTS_DATA: ProjectItem[] = [
     categoryTag: "WEB APP →",
     description:
       "Full-stack Retrieval-Augmented Generation system built as a  document assistant, combining hybrid search, cross-encoder reranking, and secure multi-user access for accurate, grounded answers over institutional documents.",
-    tags: ["Next.js 14", "FastAPI", "LangChain", "ChromaDB", "Supabase", "OpenAI"],
+    tags: [
+      "Next.js 14",
+      "FastAPI",
+      "LangChain",
+      "ChromaDB",
+      "Supabase",
+      "OpenAI",
+    ],
     gradient: "from-violet-950/40 via-neutral-900 to-neutral-950",
     accentColor: "#8b5cf6",
     liveUrl: undefined,
@@ -40,6 +41,35 @@ const PROJECTS_DATA: ProjectItem[] = [
     type: "ennea",
   },
   {
+    id: "shaheen",
+    number: "03",
+    year: "2025",
+    title: "SHAHEEN AI",
+    subtitle: "AI Marketing Platform",
+    category: "AI CONTENT PLATFORM",
+    categoryTag: "AI PLATFORM →",
+    description:
+      "Bilingual marketing platform for creating product advertisements with AI-generated images and Arabic captions. Includes an image editor, brand and post management, and Instagram Business publishing.",
+    tags: [
+      "Next.js 15",
+      "React 19",
+      "Gemini",
+      "ComfyUI",
+      "Supabase",
+      "Clerk",
+      "AWS S3",
+      "next-intl",
+    ],
+    gradient: "from-indigo-950/40 via-neutral-900 to-neutral-950",
+    accentColor: "#7F4BF3",
+    stats: [
+      { label: "Creation", value: "AI Product Ads" },
+      { label: "Publishing", value: "Instagram" },
+      { label: "Languages", value: "Arabic + English" },
+    ],
+    type: "shaheen",
+  },
+  {
     id: "scrolla",
     number: "02",
     year: "2025",
@@ -49,7 +79,15 @@ const PROJECTS_DATA: ProjectItem[] = [
     categoryTag: "SOCIAL MEDIA API →",
     description:
       "Modern async social feed API with JWT authentication, cloud-based media uploads, and a fully asynchronous backend for high-performance chronological feeds.",
-    tags: ["FastAPI", "Python", "SQLAlchemy", "SQLite", "FastAPI-Users", "ImageKit", "JWT"],
+    tags: [
+      "FastAPI",
+      "Python",
+      "SQLAlchemy",
+      "SQLite",
+      "FastAPI-Users",
+      "ImageKit",
+      "JWT",
+    ],
     gradient: "from-sky-950/40 via-neutral-900 to-neutral-950",
     accentColor: "#0ea5e9",
     githubUrl: "https://github.com/lemix7/Scrolla",
@@ -60,16 +98,15 @@ const PROJECTS_DATA: ProjectItem[] = [
     ],
     type: "scrolla",
   },
-  
 ];
-
 
 export const Projects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [selectedProjectModal, setSelectedProjectModal] = useState<ProjectItem | null>(null);
+  const [selectedProjectModal, setSelectedProjectModal] =
+    useState<ProjectItem | null>(null);
 
   // Close modal on Escape key
   React.useEffect(() => {
@@ -98,14 +135,15 @@ export const Projects: React.FC = () => {
           pin: triggerRef.current,
           anticipatePin: 1,
           start: "top top",
-          end: () => `+=${(totalProjects - 1) * window.innerHeight * scrollMultiplier}`,
+          end: () =>
+            `+=${(totalProjects - 1) * window.innerHeight * scrollMultiplier}`,
           scrub,
           pinSpacing: true,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
             const newIndex = Math.min(
               totalProjects - 1,
-              Math.max(0, Math.round(self.progress * (totalProjects - 1)))
+              Math.max(0, Math.round(self.progress * (totalProjects - 1))),
             );
             setActiveIndex((prev) => (prev === newIndex ? prev : newIndex));
           },
@@ -129,7 +167,7 @@ export const Projects: React.FC = () => {
         mm.revert();
       };
     },
-    { scope: triggerRef }
+    { scope: triggerRef },
   );
 
   // Smooth scroll to a specific project index on click
@@ -139,7 +177,8 @@ export const Projects: React.FC = () => {
     const st = ScrollTrigger.getById("projects-scroll-trigger");
 
     if (st) {
-      const targetScroll = st.start + (index / (totalProjects - 1)) * (st.end - st.start);
+      const targetScroll =
+        st.start + (index / (totalProjects - 1)) * (st.end - st.start);
       window.scrollTo({
         top: targetScroll,
         behavior: "smooth",
@@ -152,8 +191,11 @@ export const Projects: React.FC = () => {
   const activeProject = PROJECTS_DATA[activeIndex] || PROJECTS_DATA[0];
 
   return (
-    <div id="projects" ref={triggerRef} className="relative z-10 w-full bg-[#0d0d0d] text-white select-none border-t border-neutral-900">
-      
+    <div
+      id="projects"
+      ref={triggerRef}
+      className="relative z-10 w-full bg-[#0d0d0d] text-white select-none border-t border-neutral-900"
+    >
       {/* Section Container matching exact padding & rhythm of Hero & About */}
       <section
         ref={containerRef}
@@ -177,7 +219,6 @@ export const Projects: React.FC = () => {
 
         {/* MAIN BODY: 2-COLUMN LAYOUT ON DESKTOP, COMPACT ADAPTIVE STACK ON MOBILE */}
         <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-10 xl:gap-14 items-center justify-between flex-1 min-h-0 w-full overflow-hidden mt-4 sm:mt-5 lg:mt-6">
-          
           {/* DESKTOP LEFT COLUMN (Hidden on mobile/tablet < lg) */}
           <div className="hidden lg:flex lg:col-span-5 flex-col justify-center h-full">
             {/* Big Dynamic Counter: "01 / 05" */}
@@ -209,7 +250,9 @@ export const Projects: React.FC = () => {
                     <div className="flex items-center gap-2 mb-0.5">
                       <span
                         className={`text-[11px] font-mono tracking-wider ${
-                          isActive ? "text-neutral-300 font-semibold" : "text-neutral-500"
+                          isActive
+                            ? "text-neutral-300 font-semibold"
+                            : "text-neutral-500"
                         }`}
                       >
                         {proj.year}
@@ -222,7 +265,9 @@ export const Projects: React.FC = () => {
                     {/* Title */}
                     <h3
                       className={`text-xl lg:text-2xl font-extrabold tracking-tight uppercase leading-none transition-colors ${
-                        isActive ? "text-white" : "text-neutral-400 group-hover:text-neutral-200"
+                        isActive
+                          ? "text-white"
+                          : "text-neutral-400 group-hover:text-neutral-200"
                       }`}
                     >
                       {proj.title}
@@ -263,7 +308,9 @@ export const Projects: React.FC = () => {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono text-neutral-400">{activeProject.year}</span>
+                <span className="text-[11px] font-mono text-neutral-400">
+                  {activeProject.year}
+                </span>
                 {activeProject.isNew && (
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]" />
                 )}
@@ -296,7 +343,6 @@ export const Projects: React.FC = () => {
 
           {/* RIGHT COLUMN: Interactive Project Card Showcase */}
           <div className="w-full lg:col-span-7 flex-1 h-[260px] sm:h-[340px] md:h-[400px] lg:h-[540px] max-h-[560px] relative rounded-2xl sm:rounded-3xl border border-neutral-800/90 bg-[#111111]/70 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col justify-between group">
-            
             {/* Ambient project glowing backdrop */}
             {/* <div
               className="absolute inset-0 transition-opacity duration-700 opacity-20 pointer-events-none"
@@ -318,8 +364,8 @@ export const Projects: React.FC = () => {
                       isCurrent
                         ? "opacity-100 scale-100 pointer-events-auto z-10 translate-y-0"
                         : idx < activeIndex
-                        ? "opacity-0 scale-95 pointer-events-none -translate-y-3 z-0"
-                        : "opacity-0 scale-105 pointer-events-none translate-y-3 z-0"
+                          ? "opacity-0 scale-95 pointer-events-none -translate-y-3 z-0"
+                          : "opacity-0 scale-105 pointer-events-none translate-y-3 z-0"
                     }`}
                   >
                     <ProjectCard
@@ -355,11 +401,9 @@ export const Projects: React.FC = () => {
               </button>
             </div>
           </div>
-
         </div>
 
         {/* BOTTOM PAGINATION BAR */}
-        
       </section>
 
       {/* PROJECT DETAILS MODAL */}
@@ -386,10 +430,12 @@ export const Projects: React.FC = () => {
                 {selectedProjectModal.year} // {selectedProjectModal.category}
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-gradient-primary">
               {selectedProjectModal.title}
             </h2>
-            <p className="text-sm text-neutral-400 mt-1">{selectedProjectModal.subtitle}</p>
+            <p className="text-sm text-neutral-400 mt-1">
+              {selectedProjectModal.subtitle}
+            </p>
 
             {/* Modal Description */}
             <div className="my-4 sm:my-5 p-3.5 sm:p-4 rounded-xl bg-neutral-900/60 border border-neutral-800 text-xs sm:text-sm text-neutral-200 leading-relaxed">
@@ -400,9 +446,16 @@ export const Projects: React.FC = () => {
             {selectedProjectModal.stats && (
               <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
                 {selectedProjectModal.stats.map((stat, i) => (
-                  <div key={i} className="p-2.5 sm:p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-center">
-                    <div className="text-[9px] sm:text-[10px] text-neutral-400 uppercase font-mono">{stat.label}</div>
-                    <div className="text-xs sm:text-base font-bold text-white mt-0.5">{stat.value}</div>
+                  <div
+                    key={i}
+                    className="p-2.5 sm:p-3 rounded-lg bg-neutral-900 border border-neutral-800 text-center"
+                  >
+                    <div className="text-[9px] sm:text-[10px] text-gradient-primary uppercase font-mono">
+                      {stat.label}
+                    </div>
+                    <div className="text-xs sm:text-base font-bold text-white mt-0.5">
+                      {stat.value}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -410,7 +463,9 @@ export const Projects: React.FC = () => {
 
             {/* Tech Stack Tags */}
             <div className="mb-4 sm:mb-6">
-              <span className="text-xs font-mono text-neutral-400 uppercase block mb-2">Technologies Used</span>
+              <span className="text-xs font-mono text-gradient-primary uppercase block mb-2">
+                Technologies Used
+              </span>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {selectedProjectModal.tags.map((t) => (
                   <span
