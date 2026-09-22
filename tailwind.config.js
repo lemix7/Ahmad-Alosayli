@@ -25,7 +25,7 @@ export default {
         gradient: {
           primary: "#66B3FF",
           dark: "#050505",
-          light: "#FFFFFF",
+          light: "#EFEEEC",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

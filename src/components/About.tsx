@@ -20,8 +20,8 @@ interface AboutProps {
 export const About: React.FC<AboutProps> = ({
   heading = "About Me",
   subheadline = "I'm Ahmad. A full-stack engineer, systems thinker and problem solver.",
-  paragraph2 = "Through my degree and hands-on project work, I've developed across the full spectrum of software development — modern full-stack web applications, authentication & security, scalable databases, cloud infrastructure, APIs, and AI integrations. Each project has pushed me to think more rigorously about how systems fit together, not just how individual pieces work.",
-  paragraph3 = "What excites me most about engineering is creating systems that have purpose and solve real problems under real-world conditions. Thinking in systems, spotting bottlenecks before they emerge, and delivering high-value solutions. I work fluently in both English and Arabic, always eager to take on the next challenging problem to deconstruct and rebuild.",
+  paragraph1 = "Through my degree and hands-on project work, I've developed across the full spectrum of software development — modern full-stack web applications, authentication & security, scalable databases, cloud infrastructure, APIs, and AI integrations. Each project has pushed me to think more rigorously about how systems fit together, not just how individual pieces work.",
+  paragraph2 = "What excites me most about engineering is creating systems that have purpose and solve real problems under real-world conditions. Thinking in systems, spotting bottlenecks before they emerge, and delivering high-value solutions. I work fluently in both English and Arabic, always eager to take on the next challenging problem to deconstruct and rebuild.",
   skills = [
     "JavaScript",
     "TypeScript",
@@ -55,7 +55,7 @@ export const About: React.FC<AboutProps> = ({
             <div className=" overflow-hidden">
               <TextReveal
                 as="h3"
-                className="text-xl sm:text-xl md:text-2xl lg:text-3xl  text-neutral-100 leading-[1.18] tracking-tight"
+                className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-balance text-neutral-100 leading-[1.18] tracking-tight"
                 duration={1.1}
                 ease="power4.out"
                 animateOnScroll={true}
@@ -82,11 +82,11 @@ export const About: React.FC<AboutProps> = ({
               {/* <p className="text-neutral-300 font-light text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
                 {paragraph1}
               </p> */}
-              <p className="text-neutral-300  text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
-                {paragraph2}
+              <p className="text-neutral-300 text-balance  text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
+                {paragraph1}
               </p>
-              <p className="text-neutral-300  text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
-                {paragraph3}
+              <p className="text-neutral-300 text-balance text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8]">
+                {paragraph2}
               </p>
             </TextReveal>
           </div>
@@ -106,7 +106,7 @@ export const About: React.FC<AboutProps> = ({
 
           <TextReveal
             as="p"
-            className="text-neutral-300  text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.9]"
+            className="text-neutral-300 text-balance text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.9]"
             duration={1}
             stagger={0.06}
             delay={0.05}

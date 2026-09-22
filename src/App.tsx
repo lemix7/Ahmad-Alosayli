@@ -4,11 +4,11 @@ import { About } from "./components/About";
 import { Projects } from "./components/Projects";
 import { Footer } from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
-// import { SmoothScroll } from './components/SmoothScroll';
+//import { SmoothScroll } from './components/SmoothScroll';
 
 export const App: React.FC = () => {
   return (
-    // <SmoothScroll>
+    //<SmoothScroll>
     <div className="min-h-screen  text-white">
       <CustomCursor/>
       <Hero />
@@ -16,7 +16,7 @@ export const App: React.FC = () => {
       <Projects />
       <Footer />
     </div>
-    // </SmoothScroll>
+    //</SmoothScroll>
   );
 };
 
