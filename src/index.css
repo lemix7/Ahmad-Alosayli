@@ -3,6 +3,42 @@
 @tailwind components;
 @tailwind utilities;
 
+.marquee-scroller {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.marquee[data-pause-on-hover="true"]:hover .marquee-scroller,
+.marquee:focus-within .marquee-scroller {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-scroll-y {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow: auto;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+
+  .marquee-scroller {
+    animation: none;
+  }
+
+  .marquee-group[aria-hidden="true"] {
+    display: none;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

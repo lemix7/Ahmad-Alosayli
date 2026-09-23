@@ -1,5 +1,6 @@
 import React from "react";
 import TextReveal from "./TextReveal";
+import { Marquee } from "./ui/marquee";
 
 interface AboutProps {
   heading?: string;
@@ -104,18 +105,13 @@ export const About: React.FC<AboutProps> = ({
             <span>Skills</span>
           </TextReveal>
 
-          <TextReveal
-            as="p"
-            className="text-neutral-300 text-balance text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.9]"
-            duration={1}
-            stagger={0.06}
-            delay={0.05}
-            ease="power4.out"
-            animateOnScroll={true}
-            splitType="lines"
-          >
-            <span>{skills.join("  ,  ")}</span>
-          </TextReveal>
+          <Marquee duration={30} pauseOnHover className="py-4 text-neutral-300">
+            {skills.map((skill) => (
+              <span key={skill} className="mx-6 whitespace-nowrap text-sm font-medium sm:mx-8 sm:text-base">
+                {skill}
+              </span>
+            ))}
+          </Marquee>
         </div>
       </div>
     </section>
