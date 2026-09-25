@@ -10,8 +10,8 @@ export default {
       fontFamily: {
         syne: ['Syne', 'sans-serif'],
         jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['Inter', 'Arial', 'sans-serif'],
+        mono: ['"JetBrains Mono"', '"Courier New"', 'monospace'],
         serif: ['"Instrument Serif"', '"Cormorant Garamond"', 'serif'],
         cormorant: ['"Cormorant Garamond"', 'serif'],
       },
