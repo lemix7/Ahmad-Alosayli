@@ -24,12 +24,14 @@ export interface ProjectItem {
 export interface ProjectCardProps {
   project: ProjectItem;
   onOpenDetails?: () => void;
+  disabled?: boolean;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenDetails, disabled }) => {
   return (
     <button
       type="button"
+      disabled={disabled}
       onClick={onOpenDetails}
       aria-label={`Open ${project.title} project details`}
       className="group/card relative flex h-full w-full cursor-pointer select-none flex-col justify-end overflow-hidden bg-[#17171b] text-left"

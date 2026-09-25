@@ -1,0 +1,151 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e7]:
+      - link "Ahmad Alosayli" [ref=e9] [cursor=pointer]:
+        - /url: "#"
+      - link "Resume" [ref=e11] [cursor=pointer]:
+        - /url: /my-cv.pdf
+        - generic [ref=e14]:
+          - generic [ref=e15]: R
+          - generic [ref=e16]: e
+          - generic [ref=e17]: s
+          - generic [ref=e18]: u
+          - generic [ref=e19]: m
+          - generic [ref=e20]: e
+    - main [ref=e21]:
+      - heading [level=1] [ref=e22]:
+        - generic "FULL-STACK" [ref=e23]:
+          - generic [aria-hidden] [ref=e25]: FULL-STACK
+        - generic "DEVELOPER" [ref=e26]:
+          - generic [aria-hidden] [ref=e28]: DEVELOPER
+    - paragraph [ref=e30]: Scroll Down
+  - generic [ref=e32]:
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic "About Me" [ref=e35]:
+          - generic [aria-hidden] [ref=e37]: About Me
+        - generic "I'm Ahmad. A full-stack engineer, systems thinker and problem solver." [ref=e39]:
+          - generic [aria-hidden] [ref=e41]: I'm Ahmad. A full-stack engineer, systems thinker and problem solver.
+      - generic [ref=e43]:
+        - paragraph [ref=e44]:
+          - generic [aria-hidden] [ref=e46]: Through my degree and hands-on project work, I've developed across the full spectrum
+          - generic [aria-hidden] [ref=e48]: of software development — modern full-stack web applications, authentication & security,
+          - generic [aria-hidden] [ref=e50]: scalable databases, cloud infrastructure, APIs, and AI integrations. Each project has pushed me
+          - generic [aria-hidden] [ref=e52]: to think more rigorously about how systems fit together, not just how individual pieces work.
+        - paragraph [ref=e53]:
+          - generic [aria-hidden] [ref=e55]: What excites me most about engineering is creating systems that have purpose and solve
+          - generic [aria-hidden] [ref=e57]: real problems under real-world conditions. Thinking in systems, spotting bottlenecks
+          - generic [aria-hidden] [ref=e59]: before they emerge, and delivering high-value solutions. I work fluently in both English and
+          - generic [aria-hidden] [ref=e61]: Arabic, always eager to take on the next challenging problem to deconstruct and rebuild.
+    - generic [ref=e62]:
+      - generic "Skills" [ref=e63]:
+        - generic [aria-hidden] [ref=e65]: Skills
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - generic [ref=e69]: JavaScript
+          - generic [ref=e71]: TypeScript
+          - generic [ref=e73]: React & Next.js
+          - generic [ref=e75]: Node.js
+          - generic [ref=e77]: Tailwind CSS
+          - generic [ref=e79]: Python & FastAPI
+          - generic [ref=e81]: PostgreSQL
+          - generic [ref=e83]: API Development
+        - generic [aria-hidden] [ref=e85]:
+          - generic [ref=e86]: JavaScript
+          - generic [ref=e88]: TypeScript
+          - generic [ref=e90]: React & Next.js
+          - generic [ref=e92]: Node.js
+          - generic [ref=e94]: Tailwind CSS
+          - generic [ref=e96]: Python & FastAPI
+          - generic [ref=e98]: PostgreSQL
+          - generic [ref=e100]: API Development
+  - generic [ref=e104]:
+    - generic "Projects" [ref=e107]:
+      - generic [aria-hidden] [ref=e109]: Projects
+    - generic [ref=e110]:
+      - generic [ref=e111]:
+        - generic [ref=e112]:
+          - generic [ref=e113]:
+            - generic [ref=e114]: "01"
+            - generic [ref=e115]: / 03
+          - generic [ref=e116]:
+            - generic [ref=e117]: "2026"
+            - generic [ref=e118]: AI WEB APP
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - heading "RAG-LMX" [level=3] [ref=e121]
+            - paragraph [ref=e122]: AI Document Assistant
+          - button "Details" [ref=e123] [cursor=pointer]
+      - generic [ref=e129]:
+        - button "Open RAG-LMX project details" [ref=e131] [cursor=pointer]:
+          - img "RAG-LMX Screenshot" [ref=e132]
+          - generic [ref=e135]:
+            - heading "Full-stack Retrieval-Augmented Generation system built as a document assistant, combining hybrid search, cross-encoder reranking, and secure multi-user access for accurate, grounded answers over institutional documents." [level=3] [ref=e136]
+            - paragraph [ref=e137]: WEB APP • 2026
+            - generic [ref=e138]: View Project
+        - generic:
+          - button "Open SHAHEEN AI project details":
+            - img "SHAHEEN AI Screenshot"
+            - generic:
+              - generic:
+                - heading "Bilingual marketing platform for creating product advertisements with AI-generated images and Arabic captions. Includes an image editor, brand and post management, and Instagram Business publishing." [level=3]
+                - paragraph: AI PLATFORM • 2025
+                - generic: View Project
+        - generic:
+          - button "Open SCROLLA project details":
+            - generic:
+              - generic:
+                - heading "Modern async social feed API with JWT authentication, cloud-based media uploads, and a fully asynchronous backend for high-performance chronological feeds." [level=3]
+                - paragraph: SOCIAL MEDIA API • 2025
+                - generic: View Project
+  - contentinfo [ref=e143]:
+    - generic [ref=e144]:
+      - button "Get in touch" [ref=e146] [cursor=pointer]:
+        - generic [ref=e148]:
+          - generic [ref=e149]: G
+          - generic [ref=e150]: e
+          - generic [ref=e151]: t
+          - generic [ref=e153]: i
+          - generic [ref=e154]: "n"
+          - generic [ref=e156]: t
+          - generic [ref=e157]: o
+          - generic [ref=e158]: u
+          - generic [ref=e159]: c
+          - generic [ref=e160]: h
+      - generic [ref=e161]:
+        - link "LinkedIn" [ref=e162] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/ahmad-sapil-576732380/?skipRedirect=true
+          - generic [ref=e164]:
+            - generic [ref=e165]: L
+            - generic [ref=e166]: i
+            - generic [ref=e167]: "n"
+            - generic [ref=e168]: k
+            - generic [ref=e169]: e
+            - generic [ref=e170]: d
+            - generic [ref=e171]: I
+            - generic [ref=e172]: "n"
+        - link "Github" [ref=e176] [cursor=pointer]:
+          - /url: https://github.com/lemix7
+          - generic [ref=e178]:
+            - generic [ref=e179]: G
+            - generic [ref=e180]: i
+            - generic [ref=e181]: t
+            - generic [ref=e182]: h
+            - generic [ref=e183]: u
+            - generic [ref=e184]: b
+        - link "My Photography" [ref=e188] [cursor=pointer]:
+          - /url: https://aagallery.framer.website/?utm_source=ig&utm_medium=social&utm_content=link_in_bio
+          - generic [ref=e190]:
+            - generic [ref=e191]: M
+            - generic [ref=e192]: "y"
+            - generic [ref=e194]: P
+            - generic [ref=e195]: h
+            - generic [ref=e196]: o
+            - generic [ref=e197]: t
+            - generic [ref=e198]: o
+            - generic [ref=e199]: g
+            - generic [ref=e200]: r
+            - generic [ref=e201]: a
+            - generic [ref=e202]: p
+            - generic [ref=e203]: h
+            - generic [ref=e204]: "y"

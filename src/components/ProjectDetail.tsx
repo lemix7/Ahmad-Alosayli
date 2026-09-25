@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import { PROJECTS_DATA } from "./Projects";
 import type { ProjectItem } from "./ProjectCard";
+import type { MouseEvent } from "react";
 
 export function getProjectFromHash(): ProjectItem | undefined {
   const id = decodeURIComponent(window.location.hash.slice("#project/".length));
@@ -67,17 +68,26 @@ function ProjectImagePlaceholder({ project, index, aspect }: {
   );
 }
 
-export function ProjectDetail({ project }: { project: ProjectItem }) {
+export function ProjectDetail({ project, onBack, navigationBusy }: {
+  project: ProjectItem;
+  onBack: () => void;
+  navigationBusy: boolean;
+}) {
+  const returnToProjects = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (!navigationBusy) onBack();
+  };
   const titleSize = Math.min(17, 88 / project.title.length);
   const images = project.imageUrl ? [project.imageUrl] : [];
 
   return (
-    <main className="min-h-screen overflow-clip bg-[#101012] px-[4.7vw] pb-20 text-white">
+    <main className="min-h-screen overflow-clip bg-[#070707] px-[4.7vw] pb-20 text-white">
       <header className="mx-auto flex h-[72px] w-full max-w-[1600px] items-center justify-between sm:h-20">
-        <a href="#projects" className="text-base  capitalize font-normal tracking-tight text-white transition-opacity hover:opacity-65 sm:text-2xl md:text-4xl">
+        <a href="#projects" onClick={returnToProjects} aria-disabled={navigationBusy} className="text-base  capitalize font-normal tracking-tight text-white transition-opacity hover:opacity-65 sm:text-2xl md:text-4xl">
           ahmad alosayli
         </a>
-        <a href="#projects" className="inline-flex items-center gap-2 text-xs text-neutral-500 transition-colors hover:text-white sm:text-sm">
+        <a href="#projects" onClick={returnToProjects} aria-disabled={navigationBusy} className="inline-flex items-center gap-2 text-xs text-neutral-500 transition-colors hover:text-white sm:text-sm">
           <ArrowLeft size={15} /> Back to projects
         </a>
       </header>
@@ -85,6 +95,7 @@ export function ProjectDetail({ project }: { project: ProjectItem }) {
       <article className="mx-auto w-full max-w-[1600px]">
         <div className="flex h-[55vh] min-h-[300px] max-h-[620px] items-center justify-center overflow-hidden sm:h-[60vh] sm:min-h-[390px]">
           <h1
+            tabIndex={-1}
             className="whitespace-nowrap text-center font-black uppercase leading-[0.82] tracking-[-0.075em] text-white"
             style={{ fontSize: `clamp(4rem, ${titleSize}vw, 14rem)` }}
           >

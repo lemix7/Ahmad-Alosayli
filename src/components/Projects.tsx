@@ -43,7 +43,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
   },
   {
     id: "shaheen",
-    number: "03",
+    number: "02",
     year: "2025",
     title: "SHAHEEN AI",
     imageUrl: "/shaheen-portfolio-logo.png",
@@ -73,7 +73,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
   },
   {
     id: "scrolla",
-    number: "02",
+    number: "03",
     year: "2025",
     title: "SCROLLA",
     subtitle: "Share Your Moments",
@@ -102,13 +102,16 @@ export const PROJECTS_DATA: ProjectItem[] = [
   },
 ];
 
-export const Projects: React.FC = () => {
+export const Projects: React.FC<{
+  onOpenProject: (project: ProjectItem) => void;
+  navigationBusy: boolean;
+}> = ({ onOpenProject, navigationBusy }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const openProject = (project: ProjectItem) => {
-    window.location.hash = `project/${project.id}`;
+    onOpenProject(project);
   };
 
   // GSAP ScrollTrigger Setup
@@ -168,8 +171,9 @@ export const Projects: React.FC = () => {
   return (
     <div
       id="projects"
+      tabIndex={-1}
       ref={triggerRef}
-      className="relative z-10 w-full bg-[#0d0d0d] text-white select-none border-t border-neutral-900"
+      className="relative z-10 w-full bg-[#070707] text-white select-none border-t border-neutral-900"
     >
       {/* Section Container matching exact padding & rhythm of Hero & About */}
       <section
@@ -284,7 +288,7 @@ export const Projects: React.FC = () => {
                   / {String(PROJECTS_DATA.length).padStart(2, "0")}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="hidden sm:flex items-center gap-2">
                 <span className="text-[11px] font-mono text-neutral-400">
                   {activeProject.year}
                 </span>
@@ -309,8 +313,9 @@ export const Projects: React.FC = () => {
 
               {/* Mobile Quick Action Pill */}
               <button
+                disabled={navigationBusy}
                 onClick={() => openProject(activeProject)}
-                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-neutral-400/80 bg-transparent text-xs font-medium tracking-wider uppercase text-white hover:bg-white hover:text-black hover:border-white transition-all shadow-sm active:scale-95"
+                className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-neutral-400/80 bg-transparent text-xs font-medium tracking-wider uppercase text-white hover:bg-white hover:text-black hover:border-white transition-all shadow-sm active:scale-95"
               >
                 <span>Details</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -347,6 +352,7 @@ export const Projects: React.FC = () => {
                   >
                     <ProjectCard
                       project={proj}
+                      disabled={navigationBusy}
                       onOpenDetails={() => openProject(proj)}
                     />
                   </div>
