@@ -106,7 +106,7 @@ export function ProjectDetail({ project, onBack, navigationBusy }: {
         <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-[8vw]">
           <section className="lg:sticky lg:top-10 lg:self-start">
             <p className="mb-5 font-mono text-[9px] tracking-[0.2em] text-neutral-500 sm:text-[10px]">ABOUT</p>
-            <p className="max-w-[580px] text-xl leading-[1.5] tracking-[-0.025em] text-neutral-100 sm:text-2xl sm:leading-[1.55] lg:text-[1.75rem]">
+            <p className="max-w-[580px] whitespace-pre-line text-xl leading-[1.5] tracking-[-0.025em] text-neutral-100 sm:text-2xl sm:leading-[1.55] lg:text-lg">
               {project.description}
             </p>
 
@@ -150,13 +150,13 @@ export function ProjectDetail({ project, onBack, navigationBusy }: {
           <div className="flex flex-col gap-20">
             {images.length > 0 ? images.map((image, index) => (
               <img key={image} src={image} alt={`${project.title} screenshot ${index + 1}`} className="h-auto w-full rounded-2xl object-cover" />
-            )) : (
+            )) : project.id !== "scrolla" ? (
               <>
                 <ProjectImagePlaceholder project={project} index={1} aspect="0.79 / 1" />
                 <ProjectImagePlaceholder project={project} index={2} aspect="1.72 / 1" />
                 <ProjectImagePlaceholder project={project} index={3} aspect="0.9 / 1" />
               </>
-            )}
+            ) : null}
           </div>
         </div>
       </article>

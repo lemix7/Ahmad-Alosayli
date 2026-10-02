@@ -12,7 +12,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({
   name = "Ahmad Alosayli",
-  titleLine1 = "FULL-STACK",
+  titleLine1 = "FULLSTACK",
   titleLine2 = "DEVELOPER",
   resumeUrl = "/my-cv.pdf",
 }) => {

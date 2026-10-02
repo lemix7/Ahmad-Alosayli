@@ -21,7 +21,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: "AI WEB APP",
     categoryTag: "WEB APP →",
     description:
-      "Full-stack Retrieval-Augmented Generation system built as a  document assistant, combining hybrid search, cross-encoder reranking, and secure multi-user access for accurate, grounded answers over institutional documents.",
+      "RAG-LMX is a full-stack AI-powered document assistant designed to make large collections of institutional documents easier to search and understand.\n\nInstead of manually browsing through lengthy files to find specific information, users can upload documents and ask questions in natural language to receive accurate, context-aware answers grounded in the provided content.\n\nThe system uses Retrieval-Augmented Generation (RAG) with hybrid search, combining semantic and keyword-based retrieval to identify relevant information.\n\nRetrieved content is further refined using cross-encoder reranking before being provided to the language model, improving the relevance and reliability of generated answers.\n\nRAG-LMX also supports secure multi-user access, allowing users to manage and interact with their own document collections while keeping data isolated between accounts.\n\nThe project addresses the problem of information being difficult and time-consuming to retrieve from large document repositories by turning static documents into an intelligent, searchable knowledge base.",
     tags: [
       "Next.js 14",
       "FastAPI",
@@ -51,7 +51,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: "AI CONTENT PLATFORM",
     categoryTag: "AI PLATFORM →",
     description:
-      "Bilingual marketing platform for creating product advertisements with AI-generated images and Arabic captions. Includes an image editor, brand and post management, and Instagram Business publishing.",
+      "Shaheen AI is an AI-powered social media content platform designed to help businesses and brands create, manage, and publish marketing content more efficiently.\n\nInstead of relying on multiple tools to design product visuals, write captions, and plan social media posts, Shaheen AI brings the entire content creation workflow into a single platform.\n\nUsers can upload product images and use AI to generate professional backgrounds, captions, and headlines in both Arabic and English.\n\nGenerated content can then be customized, saved, and scheduled for publishing across social media platforms.\n\nThe platform also includes content history, reusable templates, favorites, an image editor, subscription plans, a credit-based usage system, and support for both English and Arabic interfaces with full RTL compatibility.\n\nI contributed to the development of the platform across both frontend and backend functionality, including redesigning the landing page, building responsive dashboard interfaces, implementing authentication and user flows, integrating database functionality, and developing the content generation and scheduling experience.\n\nThe project addresses the time and complexity involved in producing consistent social media content by giving businesses an integrated AI-assisted workflow from product image to publish-ready post.",
     tags: [
       "Next.js 15",
       "React 19",
@@ -80,7 +80,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: "SOCIAL MEDIA API",
     categoryTag: "SOCIAL MEDIA API →",
     description:
-      "Modern async social feed API with JWT authentication, cloud-based media uploads, and a fully asynchronous backend for high-performance chronological feeds.",
+      "Scrolla is a modern social media feed API designed to provide the backend infrastructure needed for building media-focused social applications.\n\nIt allows users to create accounts, securely authenticate, upload images and videos, publish posts with captions, and browse a chronological feed of content.\n\nBuilt with FastAPI and a fully asynchronous architecture, Scrolla handles database operations using async SQLAlchemy while storing uploaded media in the cloud through ImageKit.\n\nThe platform implements JWT-based authentication with registration, login, email verification, and password recovery, while protected endpoints and ownership checks ensure that users can only manage their own content.\n\nThe project addresses the core backend challenges behind social media applications—including authentication, media storage, database persistence, authorization, and feed delivery—through a clean REST API designed around asynchronous operations and separation of concerns.",
     tags: [
       "FastAPI",
       "Python",
