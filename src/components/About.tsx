@@ -20,18 +20,21 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({
   heading = "About Me",
-  subheadline = "I'm Ahmad. A full-stack engineer, systems thinker and problem solver.",
-  paragraph1 = "Through my degree and hands-on project work, I've developed across the full spectrum of software development — modern full-stack web applications, authentication & security, scalable databases, cloud infrastructure, APIs, and AI integrations. Each project has pushed me to think more rigorously about how systems fit together, not just how individual pieces work.",
-  paragraph2 = "What excites me most about engineering is creating systems that have purpose and solve real problems under real-world conditions. Thinking in systems, spotting bottlenecks before they emerge, and delivering high-value solutions. I work fluently in both English and Arabic, always eager to take on the next challenging problem to deconstruct and rebuild.",
+  subheadline = "Hey, I'm Ahmad. I build software and spend a lot of time wondering how I can make it better.",
+  paragraph1 = "I started out mostly focused on frontend development, but I quickly found myself wanting to understand what was happening behind the scenes too. That curiosity pulled me into backend development, databases, APIs, authentication, and eventually thinking more about how entire systems are put together.",
+  paragraph2 = "Most of what I know came from building projects, running into problems, and figuring out how to solve them. That process is probably my favorite part of engineering. I like understanding why something works, why it breaks, and how I can make it better. I'm always learning, experimenting with new ideas, and looking for the next interesting problem to work on.",
   skills = [
     "JavaScript",
     "TypeScript",
     "React & Next.js",
     "Node.js",
+    "Express",
+    "Docker",
     "Tailwind CSS",
     "Python & FastAPI",
     "PostgreSQL",
-    "API Development",
+    "Rest API",
+    
   ],
 }) => {
   return (
@@ -102,7 +105,7 @@ export const About: React.FC<AboutProps> = ({
             ease="power4.out"
             animateOnScroll={true}
           >
-            <span>Skills</span>
+            <span>TOOLS & TECHNOLOGIES</span>
           </TextReveal>
 
           <Marquee duration={30} pauseOnHover className="py-4 text-neutral-300">
