@@ -12,7 +12,7 @@ import { Projects } from "./components/Projects";
 import { Footer } from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
 import { getProjectFromHash, ProjectDetail } from "./components/ProjectDetail";
-//import { SmoothScroll } from './components/SmoothScroll';
+import { SmoothScroll } from './components/SmoothScroll';
 
 export const App: React.FC = () => {
   const [project, setProject] = React.useState(getProjectFromHash);
@@ -101,7 +101,7 @@ export const App: React.FC = () => {
   }, [project]);
 
   return (
-    //<SmoothScroll>
+    <SmoothScroll>
     <div className="min-h-screen  text-white" aria-busy={busy}>
       <CustomCursor />
       <CurvePageTransition ref={transitionRef} />
@@ -123,7 +123,7 @@ export const App: React.FC = () => {
         </>
       )}
     </div>
-    //</SmoothScroll>
+    </SmoothScroll>
   );
 };
 
